@@ -1,10 +1,17 @@
-import logo from './logo.svg';
+import Layout from './components/Layout/Layout';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import HomeComponent from './components/pages/HomePage';
+
 import './App.css';
 
 function App() {
   return (
-    <div>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/home" element={<HomeComponent />} />
+        <Route path="*" element={<Navigate replace to="/home" />}></Route>
+      </Routes>
+    </Layout>
   );
 }
 

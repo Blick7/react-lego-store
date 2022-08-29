@@ -1,0 +1,179 @@
+.container {
+  user-select: none;
+  // display: flex;
+  // justify-content: center;
+  padding: 1rem 2rem;
+  margin-bottom: 10rem; // TODO REMOVE
+
+  & h2 {
+    font-size: 2rem;
+    line-height: 2.7rem;
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+  }
+}
+
+img {
+  pointer-events: none;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  max-width: 20rem;
+  height: 20rem;
+
+  // margin: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgb(224, 224, 224);
+  position: relative;
+  cursor: pointer;
+}
+
+.image-container:hover img {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.img {
+  // width: 100%;
+  // height: 100%;
+  object-fit: contain;
+  transition: 0.5s;
+}
+
+.swiper-button-prev {
+  position: absolute;
+  top: 40%;
+  left: 2rem;
+  right: auto;
+  z-index: 10;
+  color: #2c2c2c;
+
+  border: 1px solid rgb(224, 224, 224);
+  background-color: #fff;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.swiper-button-prev:hover {
+  background-color: rgb(224, 224, 224);
+  transition: 0.5s;
+}
+
+.swiper-button-prev svg {
+  font-size: 2rem;
+}
+
+.swiper-button-next {
+  position: absolute;
+  top: 40%;
+  right: 1rem;
+  left: auto;
+  z-index: 10;
+  color: #2c2c2c;
+
+  border: 1px solid rgb(224, 224, 224);
+  background-color: #fff;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.swiper-button-next:hover {
+  background-color: rgb(224, 224, 224);
+  transition: 0.5s;
+}
+
+.swiper-button-next svg {
+  font-size: 2rem;
+}
+
+.swiper-button-disabled {
+  display: none;
+}
+
+.wishlist {
+  position: absolute;
+  left: 1vw;
+  top: 2vh;
+  font-size: 0.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist-icon {
+  background-color: rgb(224, 224, 224);
+  border-radius: 1rem;
+  padding: 0.3rem;
+  color: rgb(0, 109, 183);
+  transform: scale(0.8);
+  margin-right: 0.4rem;
+}
+
+.tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  background: rgb(255, 208, 0);
+  font-size: 0.75rem;
+  margin: 0 0 0.8rem 0.8rem;
+  padding: 0.5rem;
+}
+
+.description {
+  padding-top: 0.3rem;
+  font-weight: 500;
+
+  & div:first-child {
+    padding: 0.3rem 0;
+  }
+
+  & div:nth-child(3) {
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+  }
+}
+
+// @media (max-width: 1400px) {
+//   .swiper-slide {
+//     flex: 1 0 33%;
+//   }
+// }
+
+// @media (max-width: 1200px) {
+//   .swiper-slide {
+//     flex: 1 0 50%;
+//   }
+// }

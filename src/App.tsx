@@ -2,8 +2,6 @@ import Layout from './components/Layout/Layout';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import HomeComponent from './components/pages/HomePage';
 
-import './App.css';
-
 function App() {
   return (
     <Layout>

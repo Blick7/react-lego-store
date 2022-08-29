@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeDecorShowcase from './HomeDecorShowcase';
 
 import MotionBanner from './MotionBanner';
 import RecommendedCarousel from './RecommendedCarousel';
@@ -8,6 +9,7 @@ const StartingPage = () => {
     <div>
       <MotionBanner />
       <RecommendedCarousel />
+      <HomeDecorShowcase/>
     </div>
   );
 };

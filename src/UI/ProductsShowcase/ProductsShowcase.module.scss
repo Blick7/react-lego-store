@@ -1,0 +1,79 @@
+.container {
+  max-width: 90rem;
+  width: 100%;
+
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  & h2 {
+    font-size: 2rem;
+    line-height: 2.7rem;
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+    text-align: center;
+  }
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+  width: 100%;
+
+  & .item {
+    flex: 1 0 20%;
+    // height: 20rem;
+    // width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    & h3 {
+      padding: 1rem 0;
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+.image {
+  width: 20rem;
+  height: 16rem;
+  // width: 100%;
+  // height: 100%;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.2rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  & a {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+
+  & a:hover {
+    border-bottom: 0.1rem solid #000;
+    margin-bottom: -0.1rem;
+  }
+
+  & svg {
+    font-size: 1.3rem;
+  }
+}

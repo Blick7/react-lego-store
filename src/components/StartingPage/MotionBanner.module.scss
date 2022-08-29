@@ -1,0 +1,39 @@
+.motion-banner {
+  position: relative;
+  & video {
+    width: 100%;
+  }
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-10%, -50%);
+  width: 30rem;
+
+  & span {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+  }
+
+  & div {
+    margin-top: 1.2rem;
+
+    & > :not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.button {
+  height: 3rem !important;
+
+  &:hover {
+    background-color: #fff !important;
+    border: none !important;
+    color: #000;
+  }
+}

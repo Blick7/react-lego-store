@@ -92,7 +92,11 @@ const items = [
 ];
 
 const RecommendedCarousel = () => {
-  return <ProductsCarousel title={'Recommended for You'} items={items} />;
+  return (
+    <section>
+      <ProductsCarousel title={'Recommended for You'} items={items} />
+    </section>
+  );
 };
 
 export default RecommendedCarousel;

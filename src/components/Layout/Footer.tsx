@@ -12,7 +12,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Footer = () => {
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <div className={classes.container}>
         <div className={classes.wrapper}>
           <div className={classes.group}>
@@ -204,7 +204,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

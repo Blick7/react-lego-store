@@ -8,7 +8,7 @@ import LinkButton from '../../UI/LinkButton/LinkButton';
 
 const MotionBanner = () => {
   return (
-    <div className={classes['motion-banner']}>
+    <section className={classes['motion-banner']}>
       <video autoPlay={true} loop={true}>
         <source
           src="https://www.lego.com/cdn/cs/set/assets/blt4be4ad4d9a157275/1748-LSM-202208-Home-Hero-Standard-Large-Peach.mp4"
@@ -26,7 +26,7 @@ const MotionBanner = () => {
           <LinkButton text={'Learn more'} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -25,7 +25,7 @@ const ProductsShowcase = (props: IProps) => {
               <h3>{item.title}</h3>
               <div className={classes.description}>{item.description}</div>
               <div className={classes.button}>
-                <a href="#">Show now</a>
+                <span>Show now</span>
                 <KeyboardArrowRightIcon />
               </div>
             </div>

@@ -63,12 +63,13 @@
   justify-content: center;
   margin-top: 1rem;
 
-  & a {
+  & span {
     font-size: 1rem;
     line-height: 1.6rem;
+    cursor: pointer;
   }
 
-  & a:hover {
+  & span:hover {
     border-bottom: 0.1rem solid #000;
     margin-bottom: -0.1rem;
   }

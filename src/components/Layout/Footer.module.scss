@@ -1,0 +1,149 @@
+.footer {
+  background-color: rgb(32, 29, 72);
+  color: #fff;
+  font-family: 'CeraPro-Regular', sans-serif;
+}
+
+.container {
+  padding: 2rem 2rem;
+  max-width: 90rem;
+  margin: 0 auto;
+
+  & a {
+    color: #fff;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+  }
+}
+
+.wrapper {
+  display: flex;
+  & div {
+    flex: 1 0 20%;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+
+    & h4 {
+      font-weight: 700;
+    }
+  }
+}
+
+.logo {
+  width: 6rem;
+  height: 6rem;
+}
+
+.group {
+  padding: 0.5rem;
+
+  & a {
+    padding: 0.625rem 0;
+  }
+
+  & h4 {
+    padding-bottom: 1.5rem;
+  }
+
+  & ul li {
+    padding: 0.625rem 0;
+  }
+}
+
+.region-selector {
+  background: rgb(24, 21, 45);
+  color: #fff;
+  border: none;
+  max-width: 9rem;
+  margin: 0.625rem 0;
+
+  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  & svg {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.follow {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+
+  & span {
+    margin-bottom: 1rem;
+  }
+
+  & form {
+    position: relative;
+  }
+
+  & input {
+    padding: 1rem 1rem 1rem 1rem;
+    border-bottom: 0.15rem solid rgb(253, 128, 36);
+  }
+}
+
+input:focus {
+  outline: none !important;
+}
+
+.subscribe-btn {
+  position: absolute;
+  height: 100%;
+  width: 3rem;
+  right: 3rem;
+  padding-top: 0.2rem;
+  border: 0.1rem solid rgb(253, 128, 36);
+  background: rgb(253, 128, 36);
+  transition: 0.3s;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #fff;
+  }
+}
+
+.follow-us {
+  max-width: 15rem;
+  width: 100%;
+
+  & div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  & a {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+.notes-wrapper {
+  font-size: 0.75rem;
+  & ul {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  & p {
+    margin-top: 1.5rem;
+    line-height: 1.15rem;
+  }
+}

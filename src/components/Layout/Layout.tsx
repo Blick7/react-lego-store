@@ -1,6 +1,8 @@
 import React from 'react';
 
 import MainNavigation from './MainNavigation';
+import Footer from './Footer';
+
 import classes from './Layout.module.scss';
 
 type Props = {
@@ -12,6 +14,7 @@ const Layout = ({ children }: Props) => {
     <div>
       <MainNavigation />
       <main className={classes.container}>{children}</main>
+      <Footer />
     </div>
   );
 };

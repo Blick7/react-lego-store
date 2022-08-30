@@ -1,4 +1,5 @@
 import React from 'react';
+import CookieSignPosting from './CookieSignPosting';
 import HomeDecorShowcase from './HomeDecorShowcase';
 
 import MotionBanner from './MotionBanner';
@@ -9,6 +10,7 @@ const StartingPage = () => {
     <div>
       <MotionBanner />
       <RecommendedCarousel />
+      <CookieSignPosting/>
       <HomeDecorShowcase/>
     </div>
   );

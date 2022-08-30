@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import classes from './MotionBanner.module.scss';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-// @mui/styles not compatible with react 18 (https://github.com/mui/material-ui/issues/32142)
+import LinkButton from '../../UI/LinkButton/LinkButton';
 
 const MotionBanner = () => {
   return (
@@ -22,20 +22,8 @@ const MotionBanner = () => {
           LEGO® Peach™.
         </span>
         <div>
-          <Button
-            className={classes.button}
-            variant="contained"
-            style={{ backgroundColor: '#000' }}
-          >
-            Shop Now <ArrowForwardIosIcon />
-          </Button>
-          <Button
-            className={classes.button}
-            variant="contained"
-            style={{ backgroundColor: '#000' }}
-          >
-            Learn More <ArrowForwardIosIcon />
-          </Button>
+          <LinkButton text={'Shop now'} />
+          <LinkButton text={'Learn more'} />
         </div>
       </div>
     </div>

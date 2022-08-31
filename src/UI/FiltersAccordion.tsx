@@ -23,7 +23,7 @@ const FiltersAccordion: React.FC<IOptions> = ({ options }) => {
     <>
       {options.map((item) => {
         return (
-          <Accordion>
+          <Accordion key={item.title}>
             <AccordionSummary
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -34,7 +34,7 @@ const FiltersAccordion: React.FC<IOptions> = ({ options }) => {
               <FormControl>
                 <FormGroup>
                   {item.categories.map((category) => (
-                    <FormControlLabel control={<Checkbox />} label={category} />
+                    <FormControlLabel key={category} control={<Checkbox />} label={category} />
                   ))}
                 </FormGroup>
               </FormControl>

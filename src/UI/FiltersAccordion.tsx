@@ -14,11 +14,11 @@ type Options = {
   categories: string[];
 }[];
 
-interface IOptions {
+interface IProps {
   options: Options;
 }
 
-const FiltersAccordion: React.FC<IOptions> = ({ options }) => {
+const FiltersAccordion: React.FC<IProps> = ({ options }) => {
   return (
     <>
       {options.map((item) => {
@@ -34,7 +34,11 @@ const FiltersAccordion: React.FC<IOptions> = ({ options }) => {
               <FormControl>
                 <FormGroup>
                   {item.categories.map((category) => (
-                    <FormControlLabel key={category} control={<Checkbox />} label={category} />
+                    <FormControlLabel
+                      key={category}
+                      control={<Checkbox />}
+                      label={category}
+                    />
                   ))}
                 </FormGroup>
               </FormControl>

@@ -97,26 +97,33 @@ const filterOptions = [
 
 const ShopFilters = () => {
   return (
-    <div
+    <aside
       style={{
         maxWidth: '18rem',
-        margin: '2rem 0',
-        border: '0.04rem solid rgba(0, 0, 0, 0.1)',
-        borderBottom: '0.1rem solid rgba(0, 0, 0, 0.50)',
+        width: '100%',
+
+        marginRight: '2rem',
       }}
     >
-      <Button
-        variant="text"
-        fullWidth
-        disabled
-        sx={{ padding: '1rem', borderRadius: '0' }}
+      <div
+        style={{
+          border: '0.04rem solid rgba(0, 0, 0, 0.1)',
+          borderBottom: '0.2rem solid rgba(0, 0, 0, 0.50)',
+        }}
       >
-        Reset All
-      </Button>
-      <ThemeProvider theme={theme}>
-        <FiltersAccordion options={filterOptions} />
-      </ThemeProvider>
-    </div>
+        <Button
+          variant="text"
+          fullWidth
+          disabled
+          sx={{ padding: '1rem', borderRadius: '0' }}
+        >
+          Reset All
+        </Button>
+        <ThemeProvider theme={theme}>
+          <FiltersAccordion options={filterOptions} />
+        </ThemeProvider>
+      </div>
+    </aside>
   );
 };
 

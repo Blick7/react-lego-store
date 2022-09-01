@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import DrawStarsRating from './DrawStartsRating';
+import DrawStarsRating from '../DrawStarsRating';
 import SliderAddButton from '../../UI/SliderAddButton/SliderAddButton';
 
 import classes from './ProductsCarousel.module.scss';

@@ -50,7 +50,7 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
           <div>
             <DrawStarsRating rating={item.rating} />
           </div>
-          <div>{item.price}</div>
+          <div className={classes.price}>{item.price}</div>
         </div>
         <button className={classes.button}>Add to Cart</button>
       </div>

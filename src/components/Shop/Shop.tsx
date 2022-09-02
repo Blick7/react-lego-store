@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts } from '../../store/products/productsSlice';
+import { RootState } from '../../store/store';
+
 import ShopFilters from './ShopFilters';
 import ShopItem from './ShopItem';
 
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Unstable_Grid2';
 
 import classes from './Shop.module.scss';
+
+import { IinitialProducts } from '../../store/products/types';
+// import { Categories } from '../../store/filter/types';
 
 const items = [
   {
@@ -64,7 +70,7 @@ const items = [
     ages: '9+',
   },
   {
-    id: '75333',
+    id: '75339',
     title: 'Inquisitor Transport Scythe™',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
@@ -77,13 +83,31 @@ const items = [
 ];
 
 const Shop = () => {
+  const productsState = useSelector((state: RootState) => state.products);
+  const filters = useSelector((state: RootState) => state.filter);
+  const dispatch = useDispatch();
+  const [products, setProducts] = useState<IinitialProducts[]>(productsState);
+
+  useEffect(() => {
+    // console.log(filters);
+    // console.log(products);
+
+    setProducts(
+      productsState.filter((product) =>
+        filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
+      )
+    );
+
+    console.log(products);
+  }, [filters]);
+
   return (
     <section style={{ margin: '2rem 0', padding: '0 1rem' }}>
       <div style={{ display: 'flex' }}>
         <ShopFilters />
         <Box sx={{ flexGrow: 1 }}>
           <ul className={classes.items}>
-            {items.map((item) => (
+            {products.map((item) => (
               <ShopItem key={item.id} item={item} />
             ))}
           </ul>

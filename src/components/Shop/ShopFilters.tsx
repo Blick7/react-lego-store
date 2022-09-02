@@ -1,15 +1,7 @@
 import React from 'react';
 
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import classes from './ShopFilters.module.scss';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -50,10 +42,11 @@ const theme = createTheme({
   },
 });
 
-const filterOptions = [
+const filters = [
   {
     title: 'PRODUCT TYPE',
-    categories: [
+    category: 'PRODUCT_TYPE',
+    options: [
       'Home decor',
       'Sets',
       'Adults',
@@ -64,11 +57,13 @@ const filterOptions = [
   },
   {
     title: 'PRICE',
-    categories: ['$0 - $25', '$25 - $50', '$50 - $75', '$100+'],
+    category: 'PRICE',
+    options: ['$0 - $25', '$25 - $50', '$50 - $75', '$100+'],
   },
   {
     title: 'THEME',
-    categories: [
+    category: 'THEME',
+    options: [
       'Star Wars',
       'Batman',
       'Harry Potter',
@@ -79,19 +74,23 @@ const filterOptions = [
   },
   {
     title: 'AGE',
-    categories: ['4+', '6+', '9+', '13+', '18+'],
+    category: 'AGE',
+    options: ['4+', '6+', '9+', '13+', '18+'],
   },
   {
     title: 'AVALIABILITY',
-    categories: ['Avaliable Now', 'Out of Stock', 'Back Order', 'Coming Soon'],
+    category: 'AVALIABILITY',
+    options: ['Avaliable Now', 'Out of Stock', 'Back Order', 'Coming Soon'],
   },
   {
     title: 'PIECE COUNT',
-    categories: ['1-99', '100-249', '250-499', '500-999', '1000-1999', '2000+'],
+    category: 'PIECE_COUNT',
+    options: ['1-99', '100-249', '250-499', '500-999', '1000-1999', '2000+'],
   },
   {
     title: 'FEATURED',
-    categories: ['Exclusives', 'Hard to find', 'New', 'Pre-order'],
+    category: 'FEATURED',
+    options: ['Exclusives', 'Hard to find', 'New', 'Pre-order'],
   },
 ];
 
@@ -114,13 +113,12 @@ const ShopFilters = () => {
         <Button
           variant="text"
           fullWidth
-          disabled
           sx={{ padding: '1rem', borderRadius: '0' }}
         >
           Reset All
         </Button>
         <ThemeProvider theme={theme}>
-          <FiltersAccordion options={filterOptions} />
+          <FiltersAccordion filters={filters} />
         </ThemeProvider>
       </div>
     </aside>

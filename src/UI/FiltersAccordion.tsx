@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -7,21 +7,26 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { StringLiteral } from 'typescript';
+import { useDispatch } from 'react-redux';
+import { setFilter, removeFilter } from '../store/filter/filterSlice';
 
 type Options = {
   title: string;
-  categories: string[];
+  category: string;
+  options: string[];
 }[];
 
 interface IProps {
-  options: Options;
+  filters: Options;
 }
 
-const FiltersAccordion: React.FC<IProps> = ({ options }) => {
+const FiltersAccordion: React.FC<IProps> = ({ filters }) => {
+  const dispatch = useDispatch();
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <>
-      {options.map((item) => {
+      {filters.map((item) => {
         return (
           <Accordion key={item.title}>
             <AccordionSummary
@@ -33,11 +38,22 @@ const FiltersAccordion: React.FC<IProps> = ({ options }) => {
             <AccordionDetails>
               <FormControl>
                 <FormGroup>
-                  {item.categories.map((category) => (
+                  {item.options.map((option) => (
                     <FormControlLabel
-                      key={category}
+                      key={option}
                       control={<Checkbox />}
-                      label={category}
+                      label={option}
+                      id={option}
+                      onChange={(event) => {
+                        setIsActive((prevValue) => !prevValue);
+                        let target = event.target as HTMLInputElement;
+                        const category = item.category;
+                        if (target.checked) {
+                          dispatch(setFilter({ option, category }));
+                        } else {
+                          dispatch(removeFilter({ option, category }));
+                        }
+                      }}
                     />
                   ))}
                 </FormGroup>

@@ -54,6 +54,16 @@
   }
 }
 
+.featured {
+  position: absolute;
+  left: 0%;
+  bottom: 38%;
+  background: rgb(255, 208, 0);
+  font-size: 0.75rem;
+  margin: 0 0 0.8rem 0.8rem;
+  padding: 0.5rem;
+}
+
 .group {
   padding: 0 1rem 1rem;
   flex: 1;

@@ -25,7 +25,7 @@ const initialProducts: IinitialProducts[] = [
       'https://www.lego.com/cdn/cs/set/assets/blt959c93653cb028e3/75335.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
     price: 99.99,
-    featured: 'New',
+    featured: 'Hard to find',
     pieces: 300,
     ages: '9+',
     PRODUCT_TYPE: 'Sets',

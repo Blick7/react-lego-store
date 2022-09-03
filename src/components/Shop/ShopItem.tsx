@@ -23,6 +23,8 @@ interface IItem {
 }
 
 const ShopItem: React.FC<IItem> = ({ item }) => {
+  const featuredClass = item.featured.length !== 0 ? classes.featured : '';
+
   return (
     // <Grid xs={2} sm={4} md={4} style={{ height: '20rem', justifyContent: 'center', alignItems: 'center'}} container>
     <li className={classes.item}>
@@ -42,6 +44,7 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
         <FavoriteBorderIcon />
         Add to wishlist
       </div>
+      <div className={featuredClass}>{item.featured}</div>
       <div className={classes.group}>
         <div className={classes.additional}>
           <a href="/">

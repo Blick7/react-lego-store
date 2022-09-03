@@ -8,4 +8,7 @@ export interface IinitialProducts {
   pieces: number;
   ages: string;
   PRODUCT_TYPE: string;
+  theme: string;
+  age: string;
+  avaliability: string;
 }

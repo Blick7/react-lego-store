@@ -6,6 +6,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import classes from './ShopItem.module.scss';
 import DrawStarsRating from '../../UI/DrawStarsRating';
+import { Link } from 'react-router-dom';
 
 type Item = {
   id: string;
@@ -35,11 +36,11 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
           style={{ width: '100%', objectFit: 'contain' }}
         />
       </div> */}
-      <a href="/">
+      <Link to={`/product/${item.id}`}>
         <div className={classes.image}>
           <img src={item.imgUrl} alt={item.title} />
         </div>
-      </a>
+      </Link>
       <div className={classes.wishlist}>
         <FavoriteBorderIcon />
         Add to wishlist

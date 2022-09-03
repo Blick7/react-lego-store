@@ -9,7 +9,7 @@ const initialProducts: IinitialProducts[] = [
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
-    price: '$99.99',
+    price: 25,
     featured: 'New',
     pieces: 924,
     ages: '9+',
@@ -21,7 +21,7 @@ const initialProducts: IinitialProducts[] = [
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt959c93653cb028e3/75335.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
-    price: '$99.99',
+    price: 99.99,
     featured: 'New',
     pieces: 924,
     ages: '9+',
@@ -33,7 +33,7 @@ const initialProducts: IinitialProducts[] = [
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
-    price: '$99.99',
+    price: 99.99,
     featured: 'New',
     pieces: 924,
     ages: '9+',
@@ -45,7 +45,7 @@ const initialProducts: IinitialProducts[] = [
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
-    price: '$99.99',
+    price: 99.99,
     featured: 'New',
     pieces: 924,
     ages: '9+',
@@ -57,7 +57,7 @@ const initialProducts: IinitialProducts[] = [
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
-    price: '$99.99',
+    price: 99.99,
     featured: 'New',
     pieces: 924,
     ages: '9+',
@@ -69,7 +69,7 @@ const initialProducts: IinitialProducts[] = [
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     rating: 5,
-    price: '$99.99',
+    price: 99.99,
     featured: 'New',
     pieces: 924,
     ages: '9+',

@@ -3,7 +3,7 @@ export interface IinitialProducts {
   title: string;
   imgUrl: string;
   rating: number;
-  price: string;
+  price: number;
   featured: string;
   pieces: number;
   ages: string;

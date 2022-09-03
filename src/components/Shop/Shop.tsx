@@ -83,7 +83,7 @@ const items = [
 ];
 
 const Shop = () => {
-  const productsState = useSelector((state: RootState) => state.products);
+  let productsState = useSelector((state: RootState) => state.products);
   const filters = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
   const [products, setProducts] = useState<IinitialProducts[]>(productsState);
@@ -92,13 +92,48 @@ const Shop = () => {
     // console.log(filters);
     // console.log(products);
 
-    setProducts(
-      productsState.filter((product) =>
-        filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
+    if (
+      Object.values(filters.categories).every(
+        (category) => category.length === 0
       )
-    );
+    ) {
+      console.log(filters.categories);
+      setProducts(productsState);
+      return;
+    }
 
-    console.log(products);
+    // filter PRODUCT_TYPE
+    if (filters.categories.PRODUCT_TYPE.length !== 0) {
+      productsState = productsState.filter((product) =>
+        filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
+      );
+    }
+
+    // filter PRICE
+    console.log(filters.categories);
+
+    let priceMin = 0;
+    let priceMax = 0;
+
+    filters.categories.PRICE.forEach((price) => {
+      let min = +price.split('-')[0].replace(/[^0-9]/g, '');
+      let max;
+      if (price.split('-')[1] !== undefined) {
+        max = +price.split('-')[1].replace(/[^0-9]/g, '');
+      } else {
+        max = 100000000; // if max value is not set in filter, then set max value manually
+      }
+      if (min > priceMin) priceMin = min;
+      if (max > priceMax) priceMax = max;
+    });
+
+    if (filters.categories.PRICE.length !== 0) {
+      productsState = productsState.filter((product) => {
+        return product.price >= priceMin && product.price <= priceMax;
+      });
+    }
+
+    setProducts(productsState);
   }, [filters]);
 
   return (

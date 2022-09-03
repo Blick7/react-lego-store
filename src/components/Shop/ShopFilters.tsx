@@ -58,7 +58,7 @@ const filters = [
   {
     title: 'PRICE',
     category: 'PRICE',
-    options: ['$0 - $25', '$25 - $50', '$50 - $75', '$100+'],
+    options: ['$0 - $25', '$25 - $50', '$50 - $75', '$75 - $100', '$100+'],
   },
   {
     title: 'THEME',

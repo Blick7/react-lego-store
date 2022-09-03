@@ -12,7 +12,7 @@ type Item = {
   title: string;
   imgUrl: string;
   rating: number;
-  price: string;
+  price: number;
   featured: string;
   pieces: number;
   ages: string;
@@ -50,7 +50,7 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
           <div>
             <DrawStarsRating rating={item.rating} />
           </div>
-          <div className={classes.price}>{item.price}</div>
+          <div className={classes.price}>{'$' + item.price}</div>
         </div>
         <button className={classes.button}>Add to Cart</button>
       </div>

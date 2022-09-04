@@ -2,6 +2,7 @@ export interface IinitialProducts {
   id: string;
   title: string;
   imgUrl: string;
+  bigImgUrl: string;
   rating: number;
   price: number;
   featured: string;

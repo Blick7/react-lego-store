@@ -8,6 +8,8 @@ const initialProducts: IinitialProducts[] = [
     title: 'Inquisitor Transport Scythe™',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
+    bigImgUrl:
+      'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=800&height=800&dpr=1',
     rating: 5,
     price: 25,
     featured: '',
@@ -23,6 +25,8 @@ const initialProducts: IinitialProducts[] = [
     title: 'Inquisitor Transport Scythe™',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt959c93653cb028e3/75335.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
+    bigImgUrl:
+      'https://www.lego.com/cdn/cs/set/assets/blt959c93653cb028e3/75335.png?fit=bounds&format=webply&quality=80&width=800&height=800&dpr=1',
     rating: 5,
     price: 99.99,
     featured: 'Hard to find',
@@ -38,6 +42,8 @@ const initialProducts: IinitialProducts[] = [
     title: 'Inquisitor Transport Scythe™',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
+    bigImgUrl:
+      'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=800&height=800&dpr=1',
     rating: 4.5,
     price: 99.99,
     featured: 'New',
@@ -53,6 +59,8 @@ const initialProducts: IinitialProducts[] = [
     title: 'Inquisitor Transport Scythe™',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
+    bigImgUrl:
+      'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=800&height=800&dpr=1',
     rating: 5,
     price: 99.99,
     featured: 'New',
@@ -68,6 +76,8 @@ const initialProducts: IinitialProducts[] = [
     title: 'Inquisitor Transport Scythe™ Inquisitor Transport ',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
+    bigImgUrl:
+      'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=800&height=800&dpr=1',
     rating: 3,
     price: 99.99,
     featured: 'New',
@@ -83,6 +93,8 @@ const initialProducts: IinitialProducts[] = [
     title: 'Inquisitor Transport Scythe™',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
+    bigImgUrl:
+      'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=800&height=800&dpr=1',
     rating: 5,
     price: 99.99,
     featured: 'New',

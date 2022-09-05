@@ -41,23 +41,23 @@ const ProductAttributes: React.FC<Props> = ({ age, pieces, id }) => {
             xmlns="http://www.w3.org/2000/svg"
             className={classes.svg}
           >
-            <g fill-rule="nonzero" stroke="currentColor" fill="none">
+            <g fillRule="nonzero" stroke="currentColor" fill="none">
               <path
-                stroke-width="1.727"
+                strokeWidth="1.727"
                 fill="#FFF"
                 d="M1.184 9.433l15.224-7.281 15.59 7.194V30.49L17.418 39 1.184 30.577z"
               ></path>
               <path
                 d="M23.23 3.544C22.864 2.141 19.925 1 16.526 1c-3.675 0-6.798 1.228-6.89 2.895 0 0 .184 4.124.184 4.211 0 2.018 3.307 3.422 6.798 3.422 3.582 0 6.797-1.404 6.797-3.422v-3.07s.184-.965-.183-1.492z"
-                stroke-width="1.152"
+                strokeWidth="1.152"
                 fill="#FFF"
               ></path>
               <path
                 d="M10.094 4.334c.092-1.58 2.94-2.895 6.43-2.895 3.491 0 6.34 1.316 6.431 2.895.092 1.667-2.756 2.983-6.43 2.983-3.675 0-6.523-1.404-6.43-2.983h0z"
-                stroke-width="1.152"
+                strokeWidth="1.152"
               ></path>
               <path
-                stroke-width="1.727"
+                strokeWidth="1.727"
                 d="M2 10l15 7.222V39M17 17l14.63-7.122"
               ></path>
             </g>
@@ -80,7 +80,7 @@ const ProductAttributes: React.FC<Props> = ({ age, pieces, id }) => {
               d="M13.81 12.333l-2.833 11.334h11.216l2.834-11.334H13.81zm.945-3.777H25.97l1.53-6.124a1.89 1.89 0 013.668.914l-1.303 5.21h3.245c1.047 0 1.889.846 1.889 1.889a1.887 1.887 0 01-1.889 1.888h-4.19l-2.833 11.334h7.023c1.047 0 1.889.846 1.889 1.888a1.887 1.887 0 01-1.889 1.89h-7.967l-1.534 6.123a1.888 1.888 0 11-3.66-.914l1.299-5.21H10.033l-1.534 6.124a1.888 1.888 0 11-3.66-.914l1.299-5.21h-3.25a1.89 1.89 0 010-3.777h4.194l2.834-11.334H2.889a1.89 1.89 0 010-3.777h7.971l1.534-6.124a1.884 1.884 0 012.285-1.375 1.883 1.883 0 011.375 2.29l-1.3 5.209z"
               fill="currentColor"
               stroke="#FFF"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             ></path>
           </svg>
         </div>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import DrawStarsRating from '../../../UI/DrawStarsRating';
 
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -27,8 +27,44 @@ const ProductOverview: React.FC<Props> = ({
   avaliability,
   id,
 }) => {
-  const inputRef = useRef(1);
+  const inputRef = useRef<HTMLInputElement>(null);
   const featuredClass = featured.length !== 0 ? classes.featured : '';
+  const [removeBtnActive, setRemoveBtnActive] = useState(false);
+  const [addBtnActive, setAddBtnActive] = useState(true);
+
+  const removeBtnClass = removeBtnActive
+    ? `${classes.button}`
+    : `${classes.button} ${classes['btn-disabled']}`;
+  const addBtnClass = addBtnActive
+    ? `${classes.button}`
+    : `${classes.button} ${classes['btn-disabled']}`;
+
+  const removeItemHandler = () => {
+    if (inputRef.current?.value === '1') {
+      setRemoveBtnActive(false);
+      return;
+    }
+    if (inputRef.current !== null) {
+      inputRef.current.value = (+inputRef.current.value - 1).toString();
+      if (inputRef.current.value === '1') {
+        setRemoveBtnActive(false);
+      }
+      setAddBtnActive(true);
+    }
+  };
+
+  const addItemHandler = () => {
+    if (inputRef.current?.value === '10') {
+      return;
+    }
+    if (inputRef.current !== null) {
+      inputRef.current.value = (+inputRef.current.value + 1).toString();
+      if (inputRef.current.value === '10') {
+        setAddBtnActive(false);
+      }
+      setRemoveBtnActive(true);
+    }
+  };
 
   return (
     <div className={classes.overview}>
@@ -46,11 +82,11 @@ const ProductOverview: React.FC<Props> = ({
       <div className={classes.price}>${price}</div>
       <span className={classes.avaliability}>{avaliability}</span>
       <div className={classes.quantity}>
-        <button className={classes.button}>
+        <button className={removeBtnClass} onClick={removeItemHandler}>
           <RemoveIcon />
         </button>
-        <input type="number" defaultValue={1} />
-        <button className={classes.button}>
+        <input type="number" defaultValue={1} ref={inputRef} />
+        <button className={addBtnClass} onClick={addItemHandler}>
           <AddIcon />
         </button>
       </div>

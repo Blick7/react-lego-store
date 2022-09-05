@@ -27,8 +27,6 @@ const Product = () => {
     avaliability,
   } = product!;
 
-  console.log(product);
-
   return (
     <section className={classes.section}>
       <div className={classes.view}>

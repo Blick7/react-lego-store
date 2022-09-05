@@ -1,8 +1,48 @@
 .overview {
   border-left: 0.1rem solid rgb(224, 224, 224);
   padding: 1rem 0 0 1rem;
-  max-width: 30rem;
-  width: 100%;
+  flex: 1 1;
+  & h3 {
+    margin: 1rem 6rem 0 0;
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+    font-weight: 500;
+  }
+
+  & .price {
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  & .avaliability {
+    color: rgb(0, 133, 55);
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+    font-weight: 700;
+  }
+
+  & .quantity {
+    display: flex;
+    margin-top: 1.5rem;
+
+    & input {
+      max-width: 4rem;
+      text-align: center;
+      border: none;
+      border-top: 0.1rem solid rgb(224, 224, 224);
+      border-bottom: 0.1rem solid rgb(224, 224, 224);
+      height: 3rem;
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
 }
 
 .featured {
@@ -10,4 +50,100 @@
   background: rgb(255, 208, 0);
   font-size: 0.75rem;
   padding: 0.5rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem solid rgb(224, 224, 224);
+  background: transparent;
+  width: 3rem;
+  cursor: pointer;
+
+  &:first-child {
+    border-radius: 0.4rem 0rem 0rem 0.4rem;
+  }
+  &:last-child {
+    border-radius: 0rem 0.4rem 0.4rem 0rem;
+  }
+}
+
+.cart-add-button {
+  width: 100%;
+  background-color: rgb(253, 128, 36);
+  border-color: rgb(253, 128, 36);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cart-add-button:hover {
+  background-color: #fff;
+}
+
+.wishlist {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  border: none;
+  background-color: transparent;
+  margin-left: 1rem;
+  cursor: pointer;
+  & svg {
+    background-color: rgb(224, 224, 224);
+    color: rgb(0, 109, 183);
+    border-radius: 1rem;
+    padding: 0.3rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+.product-accessory {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.product-accessory__button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-top: 0.1rem solid rgb(224, 224, 224);
+
+  font-weight: 500;
+  font-size: 0.875rem;
+
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  & span:first-of-type {
+    flex: 0 1;
+
+    & svg {
+      color: rgb(0, 109, 183);
+    }
+  }
+
+  & span:last-of-type {
+    flex: 3 1;
+    text-align: left;
+    padding-left: 2rem;
+    color: rgb(117, 117, 117);
+  }
+
+  & span:last-of-type:hover {
+    color: rgb(0, 109, 183);
+  }
+
+  & svg {
+    flex: 1 1;
+    font-size: 2rem;
+    color: rgb(117, 117, 117);
+  }
 }

@@ -1,0 +1,42 @@
+.quantity {
+  display: flex;
+  margin-top: 1.5rem;
+
+  & input {
+    max-width: 4rem;
+    text-align: center;
+    border: none;
+    border-top: 0.1rem solid rgb(224, 224, 224);
+    border-bottom: 0.1rem solid rgb(224, 224, 224);
+    height: 3rem;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem solid rgb(224, 224, 224);
+  background: transparent;
+  width: 3rem;
+  cursor: pointer;
+
+  &:first-child {
+    border-radius: 0.4rem 0rem 0rem 0.4rem;
+  }
+  &:last-child {
+    border-radius: 0rem 0.4rem 0.4rem 0rem;
+  }
+}
+
+.btn-disabled {
+  color: rgba(117, 117, 117, 0.5);
+  cursor: default;
+}

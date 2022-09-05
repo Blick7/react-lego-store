@@ -27,7 +27,6 @@ const ProductOverview: React.FC<Props> = ({
   avaliability,
   id,
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState(1);
   const featuredClass = featured.length !== 0 ? classes.featured : '';
   const [removeBtnActive, setRemoveBtnActive] = useState(false);

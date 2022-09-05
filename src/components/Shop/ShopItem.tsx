@@ -2,8 +2,6 @@ import React from 'react';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-import Grid from '@mui/material/Unstable_Grid2';
-
 import classes from './ShopItem.module.scss';
 import DrawStarsRating from '../../UI/DrawStarsRating';
 import { Link } from 'react-router-dom';
@@ -27,15 +25,7 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
   const featuredClass = item.featured.length !== 0 ? classes.featured : '';
 
   return (
-    // <Grid xs={2} sm={4} md={4} style={{ height: '20rem', justifyContent: 'center', alignItems: 'center'}} container>
     <li className={classes.item}>
-      {/* <div style={{ display: 'flex', padding: '1rem' }}>
-        <img
-          src={item.imgUrl}
-          alt={item.title}
-          style={{ width: '100%', objectFit: 'contain' }}
-        />
-      </div> */}
       <Link to={`/product/${item.id}`}>
         <div className={classes.image}>
           <img src={item.imgUrl} alt={item.title} />
@@ -59,7 +49,6 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
         <button className={classes.button}>Add to Cart</button>
       </div>
     </li>
-    // </Grid>
   );
 };
 

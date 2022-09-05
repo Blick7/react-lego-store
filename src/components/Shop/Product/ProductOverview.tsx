@@ -28,6 +28,7 @@ const ProductOverview: React.FC<Props> = ({
   id,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState(1);
   const featuredClass = featured.length !== 0 ? classes.featured : '';
   const [removeBtnActive, setRemoveBtnActive] = useState(false);
   const [addBtnActive, setAddBtnActive] = useState(true);
@@ -39,14 +40,17 @@ const ProductOverview: React.FC<Props> = ({
     ? `${classes.button}`
     : `${classes.button} ${classes['btn-disabled']}`;
 
+  const min = 1;
+  const max = 10;
+
   const removeItemHandler = () => {
-    if (inputRef.current?.value === '1') {
+    if (inputValue === min) {
       setRemoveBtnActive(false);
       return;
     }
-    if (inputRef.current !== null) {
-      inputRef.current.value = (+inputRef.current.value - 1).toString();
-      if (inputRef.current.value === '1') {
+    if (inputValue !== null) {
+      setInputValue((prevValue) => prevValue - 1);
+      if (inputValue === min + 1) {
         setRemoveBtnActive(false);
       }
       setAddBtnActive(true);
@@ -54,16 +58,32 @@ const ProductOverview: React.FC<Props> = ({
   };
 
   const addItemHandler = () => {
-    if (inputRef.current?.value === '10') {
+    if (inputValue === max) {
+      setAddBtnActive(false);
       return;
     }
-    if (inputRef.current !== null) {
-      inputRef.current.value = (+inputRef.current.value + 1).toString();
-      if (inputRef.current.value === '10') {
+    if (inputValue !== null) {
+      setInputValue((prevValue) => prevValue + 1);
+
+      if (inputValue >= max - 1) {
         setAddBtnActive(false);
       }
       setRemoveBtnActive(true);
     }
+  };
+
+  const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (Number(event.target.value) > max) {
+      setInputValue(max);
+      return;
+    } else if (Number(event.target.value) < min) {
+      setInputValue(min);
+    }
+    setInputValue(Number(event.target.value));
+  };
+
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.target.select();
   };
 
   return (
@@ -85,7 +105,12 @@ const ProductOverview: React.FC<Props> = ({
         <button className={removeBtnClass} onClick={removeItemHandler}>
           <RemoveIcon />
         </button>
-        <input type="number" defaultValue={1} ref={inputRef} />
+        <input
+          type="number"
+          value={inputValue}
+          onChange={inputChangeHandler}
+          onFocus={handleFocus}
+        />
         <button className={addBtnClass} onClick={addItemHandler}>
           <AddIcon />
         </button>

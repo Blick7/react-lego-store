@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addItem, removeItem } from '../../store/cart/cartSlice';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
@@ -23,6 +26,12 @@ interface IItem {
 
 const ShopItem: React.FC<IItem> = ({ item }) => {
   const featuredClass = item.featured.length !== 0 ? classes.featured : '';
+  const dispatch = useDispatch();
+
+  const addProductHandler = () => {
+    console.log('jhey');
+    dispatch(addItem({ item, quantity: 1 }));
+  };
 
   return (
     <li className={classes.item}>
@@ -46,7 +55,9 @@ const ShopItem: React.FC<IItem> = ({ item }) => {
           </div>
           <div className={classes.price}>{'$' + item.price}</div>
         </div>
-        <button className={classes.button}>Add to Cart</button>
+        <button className={classes.button} onClick={addProductHandler}>
+          Add to Cart
+        </button>
       </div>
     </li>
   );

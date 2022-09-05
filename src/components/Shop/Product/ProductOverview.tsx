@@ -44,7 +44,9 @@ const ProductOverview: React.FC<Props> = ({
       <h3>{title}</h3>
       <div className={classes.price}>${price}</div>
       <span className={classes.avaliability}>{avaliability}</span>
-      <QuantitySelector value={1} />
+      <div style={{ marginTop: '1.5rem' }}>
+        <QuantitySelector value={1} />
+      </div>
       <div
         style={{
           display: 'flex',

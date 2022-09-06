@@ -1,10 +1,16 @@
 import React, { useRef, useState } from 'react';
 
 import TextField from '@mui/material/TextField';
+import CheckIcon from '@mui/icons-material/Check';
 
 import classes from './OrderSummary.module.scss';
 
-const OrderSummary = () => {
+type Props = {
+  quantity: number;
+  amount: number;
+};
+
+const OrderSummary: React.FC<Props> = ({ quantity, amount }) => {
   const inputPromoRef = useRef<HTMLInputElement>();
   const [buttonIsActive, setButtonIsActive] = useState(true);
   let promoBtnClass = buttonIsActive ? `${classes['btn--disabled']}` : '';
@@ -31,10 +37,35 @@ const OrderSummary = () => {
             variant="filled"
             inputRef={inputPromoRef}
             onChange={promoChangeHandler}
+            sx={{ backgroundColor: 'white !important' }}
           />
           <button disabled={buttonIsActive} className={promoBtnClass}>
             Apply
           </button>
+        </div>
+      </div>
+      <div className={classes['order-summary']}>
+        <h2>Order Summary</h2>
+        <p>Enter a ZIP code to estimate tax and delivery</p>
+        <div className={classes['code-input']}>
+          <TextField
+            label="Enter code"
+            variant="filled"
+            sx={{ backgroundColor: 'white !important' }}
+          />
+          <button>Apply</button>
+        </div>
+        <div className={classes['order-description']}>
+          <span>Order value ({quantity}) items</span>
+          <span>${amount}</span>
+        </div>
+        <div className={classes['order-shipping']}>
+          <span>Congratulations you qualify for FREE shipping</span>
+          <CheckIcon />
+        </div>
+        <div className={classes['order-total']}>
+          <span>Order Total</span>
+          <span>${amount}</span>
         </div>
       </div>
     </div>

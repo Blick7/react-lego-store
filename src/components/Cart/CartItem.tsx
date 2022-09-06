@@ -14,8 +14,18 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item }) => {
+  const { product } = item;
   const { imgUrl, title, price } = item.product;
   const dispatch = useDispatch();
+  const actionHandler = (type: string) => {
+    if (type === 'ADD_ITEM') {
+      dispatch(addItem({ product, quantity: 1 }));
+    }
+    if (type === 'REMOVE_ITEM') {
+      dispatch(removeItem({ product, quantity: 1 }));
+    }
+  };
+
   return (
     <div className={classes.item}>
       <div className={classes.image}>
@@ -32,13 +42,13 @@ const CartItem: React.FC<Props> = ({ item }) => {
             marginTop: '3rem',
           }}
         >
-          <div>{price}</div>
-          <QuantitySelector value={item.quantity} />
+          <div className={classes.price}>${price}</div>
+          <QuantitySelector value={item.quantity} actions={actionHandler} />
         </div>
       </div>
       <div
         className={classes.remove}
-        onClick={() => dispatch(removeItem(item))}
+        onClick={() => dispatch(removeItem({ product, quantity: 100 }))}
       >
         <DeleteOutlineIcon />
       </div>

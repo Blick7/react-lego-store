@@ -29,7 +29,6 @@ const ShopItem: React.FC<IProduct> = ({ product }) => {
   const dispatch = useDispatch();
 
   const addProductHandler = () => {
-    console.log('jhey');
     dispatch(addItem({ product, quantity: 1 }));
   };
 

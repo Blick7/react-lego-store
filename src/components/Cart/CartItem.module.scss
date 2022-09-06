@@ -23,6 +23,18 @@
   flex-direction: column;
   margin-left: 1rem;
 
+  & h3 {
+    font-size: 1rem;
+    line-height: 1.5625rem;
+    font-weight: 500;
+  }
+
+  & .price {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+  }
+
   & button {
     background: #fff;
   }

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import TextField from '@mui/material/TextField';
 import CheckIcon from '@mui/icons-material/Check';
+import GppGoodIcon from '@mui/icons-material/GppGood';
 
 import classes from './OrderSummary.module.scss';
 
@@ -14,6 +15,8 @@ const OrderSummary: React.FC<Props> = ({ quantity, amount }) => {
   const inputPromoRef = useRef<HTMLInputElement>();
   const [buttonIsActive, setButtonIsActive] = useState(true);
   let promoBtnClass = buttonIsActive ? `${classes['btn--disabled']}` : '';
+
+  amount = +amount.toFixed(3);
 
   const promoChangeHandler = () => {
     if (
@@ -67,6 +70,9 @@ const OrderSummary: React.FC<Props> = ({ quantity, amount }) => {
           <span>Order Total</span>
           <span>${amount}</span>
         </div>
+        <button className={classes['order-button']}>
+          <GppGoodIcon /> <span>Checkout Securely</span>
+        </button>
       </div>
     </div>
   );

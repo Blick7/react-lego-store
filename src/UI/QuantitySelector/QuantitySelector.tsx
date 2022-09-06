@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem, removeItem } from '../../store/cart/cartSlice';
 
 import classes from './QuantitySelector.module.scss';
 
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { Product } from '../../store/cart/types';
 
 type Props = {
   value: number;
+  actions?: (type: string) => void;
 };
 
-const QuantitySelector: React.FC<Props> = ({ value }) => {
+type Obj = {
+  type: string;
+};
+
+const QuantitySelector: React.FC<Props> = ({ value, actions }) => {
   const [inputValue, setInputValue] = useState(value);
   const [removeBtnActive, setRemoveBtnActive] = useState(value > 1);
   const [addBtnActive, setAddBtnActive] = useState(value <= 10);
+
+  const dispatch = useDispatch();
 
   const removeBtnClass = removeBtnActive
     ? `${classes.button}`
@@ -25,6 +35,8 @@ const QuantitySelector: React.FC<Props> = ({ value }) => {
   const max = 10;
 
   const removeItemHandler = () => {
+    console.log(inputValue);
+
     if (inputValue === min) {
       setRemoveBtnActive(false);
       return;
@@ -33,24 +45,37 @@ const QuantitySelector: React.FC<Props> = ({ value }) => {
       setInputValue((prevValue) => prevValue - 1);
       if (inputValue === min + 1) {
         setRemoveBtnActive(false);
+
+        if (actions) actions('REMOVE_ITEM');
+      } else {
+        setAddBtnActive(true);
+
+        if (actions) actions('REMOVE_ITEM');
       }
-      setAddBtnActive(true);
     }
   };
 
   const addItemHandler = () => {
+    console.log(inputValue);
     if (inputValue === max) {
       setAddBtnActive(false);
       return;
     }
-    if (inputValue !== null) {
+    // if (inputValue !== null) {
+    if (inputValue <= 10) {
       setInputValue((prevValue) => prevValue + 1);
-
-      if (inputValue >= max - 1) {
-        setAddBtnActive(false);
-      }
-      setRemoveBtnActive(true);
     }
+
+    if (inputValue >= max - 1) {
+      setAddBtnActive(false);
+
+      if (actions) actions('ADD_ITEM');
+    } else {
+      setRemoveBtnActive(true);
+
+      if (actions) actions('ADD_ITEM');
+    }
+    // }
   };
 
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

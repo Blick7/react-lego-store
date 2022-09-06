@@ -1,5 +1,5 @@
 import { createSlice, current } from '@reduxjs/toolkit';
-import ICart from './types';
+import ICart, { Product } from './types';
 
 const initialCart: ICart = {
   items: [],
@@ -12,35 +12,68 @@ const cartSlice = createSlice({
   name: 'cart',
   reducers: {
     addItem: (state, action) => {
+      // state.items = state.items.map((item) => {
+      //   if (item.product.id === payload.product.id) {
+      //     if (item.quantity > 10) return item;
+      //     item.quantity++;
+      //     state.totalQuantity += payload.quantity;
+      //     state.totalAmount += payload.product.price * payload.quantity;
+      //     return item;
+      //   } else {
+      //     console.log('hey', payload);
+      //     state.items = [...state.items, payload];
+      //     state.totalQuantity += payload.quantity;
+      //     state.totalAmount += payload.product.price * payload.quantity;
+      //     console.log(current(state));
+      //     return item;
+      //   }
+      // });
+
       const payload = action.payload;
 
-      state.items = state.items.map((item) => {
+      let isUnique = true;
+      let notUniqueIdx: number;
+      for (let item of state.items) {
         if (item.product.id === payload.product.id) {
-          item.quantity++;
-          state.totalQuantity += payload.quantity;
-          state.totalAmount += payload.product.price * payload.quantity;
-          return item;
-        } else {
-          state.items = [...state.items, payload];
-          state.totalQuantity += payload.quantity;
-          state.totalAmount += payload.product.price * payload.quantity;
-          return item;
+          isUnique = false;
+          notUniqueIdx = state.items.indexOf(item);
         }
-      });
+      }
 
-      if (state.items.length === 0) {
+      if (isUnique) {
         state.items = [...state.items, payload];
+        state.totalQuantity += payload.quantity;
+        state.totalAmount += payload.product.price * payload.quantity;
+      } else {
+        if (state.items[notUniqueIdx!].quantity >= 10) return;
+        state.items[notUniqueIdx!].quantity++;
         state.totalQuantity += payload.quantity;
         state.totalAmount += payload.product.price * payload.quantity;
       }
     },
     removeItem: (state, action) => {
       const payload = action.payload;
-      state.items = state.items.filter(
-        (item) => item.product.id !== payload.id
-      );
-      state.totalQuantity -= 1;
-      state.totalAmount += payload.item.price;
+      console.log(action.payload);
+
+      if (payload.quantity === 100) {
+        state.items = state.items.filter(
+          (item) => item.product.id !== payload.product.id
+        );
+        state.totalQuantity = 0;
+        state.totalAmount = 0;
+      } else {
+        state.totalQuantity -= 1;
+        state.totalAmount -= payload.product.price;
+      }
+
+      state.items = state.items.map((item) => {
+        if (item.product.id === payload.product.id) {
+          console.log(item.product.id, payload.product.id);
+          item.quantity -= payload.quantity;
+          return item;
+        }
+        return item;
+      });
     },
   },
 });

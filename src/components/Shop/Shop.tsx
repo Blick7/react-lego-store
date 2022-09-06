@@ -38,8 +38,8 @@ const Shop = () => {
         <ShopFilters />
         <Box sx={{ flexGrow: 1 }}>
           <ul className={classes.items}>
-            {products.map((item) => (
-              <ShopItem key={item.id} item={item} />
+            {products.map((product) => (
+              <ShopItem key={product.id} product={product} />
             ))}
           </ul>
         </Box>

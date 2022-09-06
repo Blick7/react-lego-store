@@ -11,14 +11,17 @@ import classes from './Cart.module.scss';
 
 const Cart = () => {
   const cartState = useSelector((state: RootState) => state.cart);
+  console.log(cartState);
   return (
     <section className={classes.container}>
       <h1>My Cart ({cartState.totalQuantity})</h1>
       <div className={classes.wrapper}>
         <CartItems items={cartState.items} />
-        <OrderSummary />
+        <OrderSummary
+          quantity={cartState.totalQuantity}
+          amount={cartState.totalAmount}
+        />
       </div>
-      <div>Price: {cartState.totalAmount}</div>
     </section>
   );
 };

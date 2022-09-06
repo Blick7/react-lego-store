@@ -1,18 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem, removeItem } from '../../store/cart/cartSlice';
 import { IinitialProducts } from '../../store/products/types';
 import QuantitySelector from '../../UI/QuantitySelector/QuantitySelector';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 import classes from './CartItem.module.scss';
+import { Product } from '../../store/cart/types';
 
 type Props = {
-  item: IinitialProducts;
+  item: Product;
 };
 
 const CartItem: React.FC<Props> = ({ item }) => {
-  const { imgUrl, title, price } = item;
-
+  const { imgUrl, title, price } = item.product;
+  const dispatch = useDispatch();
   return (
     <div className={classes.item}>
       <div className={classes.image}>
@@ -30,10 +33,13 @@ const CartItem: React.FC<Props> = ({ item }) => {
           }}
         >
           <div>{price}</div>
-          <QuantitySelector value={1} />
+          <QuantitySelector value={item.quantity} />
         </div>
       </div>
-      <div className={classes.remove}>
+      <div
+        className={classes.remove}
+        onClick={() => dispatch(removeItem(item))}
+      >
         <DeleteOutlineIcon />
       </div>
     </div>

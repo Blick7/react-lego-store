@@ -9,7 +9,7 @@ import classes from './ShopItem.module.scss';
 import DrawStarsRating from '../../UI/DrawStarsRating';
 import { Link } from 'react-router-dom';
 
-type Item = {
+type Product = {
   id: string;
   title: string;
   imgUrl: string;
@@ -20,40 +20,40 @@ type Item = {
   ages: string;
 };
 
-interface IItem {
-  item: Item;
+interface IProduct {
+  product: Product;
 }
 
-const ShopItem: React.FC<IItem> = ({ item }) => {
-  const featuredClass = item.featured.length !== 0 ? classes.featured : '';
+const ShopItem: React.FC<IProduct> = ({ product }) => {
+  const featuredClass = product.featured.length !== 0 ? classes.featured : '';
   const dispatch = useDispatch();
 
   const addProductHandler = () => {
     console.log('jhey');
-    dispatch(addItem({ item, quantity: 1 }));
+    dispatch(addItem({ product, quantity: 1 }));
   };
 
   return (
     <li className={classes.item}>
-      <Link to={`/product/${item.id}`}>
+      <Link to={`/product/${product.id}`}>
         <div className={classes.image}>
-          <img src={item.imgUrl} alt={item.title} />
+          <img src={product.imgUrl} alt={product.title} />
         </div>
       </Link>
       <div className={classes.wishlist}>
         <FavoriteBorderIcon />
         Add to wishlist
       </div>
-      <div className={featuredClass}>{item.featured}</div>
+      <div className={featuredClass}>{product.featured}</div>
       <div className={classes.group}>
         <div className={classes.additional}>
           <a href="/">
-            <h4>{item.title}</h4>
+            <h4>{product.title}</h4>
           </a>
           <div>
-            <DrawStarsRating rating={item.rating} />
+            <DrawStarsRating rating={product.rating} />
           </div>
-          <div className={classes.price}>{'$' + item.price}</div>
+          <div className={classes.price}>{'$' + product.price}</div>
         </div>
         <button className={classes.button} onClick={addProductHandler}>
           Add to Cart

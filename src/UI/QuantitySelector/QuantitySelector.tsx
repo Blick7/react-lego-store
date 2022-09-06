@@ -11,8 +11,8 @@ type Props = {
 
 const QuantitySelector: React.FC<Props> = ({ value }) => {
   const [inputValue, setInputValue] = useState(value);
-  const [removeBtnActive, setRemoveBtnActive] = useState(false);
-  const [addBtnActive, setAddBtnActive] = useState(true);
+  const [removeBtnActive, setRemoveBtnActive] = useState(value > 1);
+  const [addBtnActive, setAddBtnActive] = useState(value <= 10);
 
   const removeBtnClass = removeBtnActive
     ? `${classes.button}`

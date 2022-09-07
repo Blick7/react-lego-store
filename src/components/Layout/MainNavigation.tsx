@@ -57,7 +57,9 @@ const MainNavigation: React.FC = () => {
               </Button>
             </li>
             <li>
-              <Button>Register</Button>
+              <NavLink to="/auth">
+                <Button>Register</Button>
+              </NavLink>
             </li>
           </ul>
         </nav>

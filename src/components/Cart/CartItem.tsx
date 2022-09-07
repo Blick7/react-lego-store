@@ -14,7 +14,7 @@ type Props = {
 };
 
 const CartItem: React.FC<Props> = ({ item }) => {
-  const { product } = item;
+  const { product, quantity } = item;
   const { imgUrl, title, price } = item.product;
   const dispatch = useDispatch();
   const actionHandler = (type: string) => {
@@ -48,7 +48,9 @@ const CartItem: React.FC<Props> = ({ item }) => {
       </div>
       <div
         className={classes.remove}
-        onClick={() => dispatch(removeItem({ product, quantity: 100 }))}
+        onClick={() =>
+          dispatch(removeItem({ product, quantity, actionType: 'REMOVE_ALL' }))
+        }
       >
         <DeleteOutlineIcon />
       </div>

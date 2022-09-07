@@ -55,12 +55,12 @@ const cartSlice = createSlice({
       const payload = action.payload;
       console.log(action.payload);
 
-      if (payload.quantity === 100) {
+      if (payload.actionType === 'REMOVE_ALL') {
         state.items = state.items.filter(
           (item) => item.product.id !== payload.product.id
         );
-        state.totalQuantity = 0;
-        state.totalAmount = 0;
+        state.totalQuantity -= payload.quantity;
+        state.totalAmount -= payload.quantity * payload.product.price;
       } else {
         state.totalQuantity -= 1;
         state.totalAmount -= payload.product.price;

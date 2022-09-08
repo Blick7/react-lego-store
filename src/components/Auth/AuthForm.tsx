@@ -8,14 +8,14 @@ type Props = {
   type: string;
   setEmail: (value: string | ((prevVal: string) => string)) => void;
   setPassword: (value: string | ((prevVal: string) => string)) => void;
-  handleAction: () => void;
+  authentificate: () => void;
 };
 
 const AuthForm: React.FC<Props> = ({
   type,
   setEmail,
   setPassword,
-  handleAction,
+  authentificate,
 }) => {
   const [emailValue, setEmailValue] = useState<string | null>(null);
   const [passwordValue, setPasswordValue] = useState<string | null>(null);
@@ -31,9 +31,8 @@ const AuthForm: React.FC<Props> = ({
 
   const formSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('action');
 
-    handleAction();
+    authentificate();
   };
 
   const emailInputHandler = (

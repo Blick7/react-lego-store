@@ -6,6 +6,10 @@ import { app } from '../../firebase-config';
 import { getAuth, onAuthStateChanged, updatePassword } from 'firebase/auth';
 import { setUser } from '../../store/user/userSlice';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 import classes from './Profile.module.scss';
 
 const Profile = () => {
@@ -20,7 +24,6 @@ const Profile = () => {
     const email = currentUser?.email;
     setUserEmail(email);
     dispatch(setUser(email));
-    console.log(email);
   });
 
   if (!userEmail) {
@@ -32,14 +35,20 @@ const Profile = () => {
     if (password!.length > 6) {
       const user = authentification.currentUser;
       updatePassword(user!, password!)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          toast.success('Password Updated!', {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(`${error}`, {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         });
     } else {
-      // TODO TOSTIFY NOTIFICATION HERE
+      toast.warn('The password must be at least 6 characters long!', {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
     }
   };
 
@@ -66,6 +75,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

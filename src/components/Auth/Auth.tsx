@@ -10,6 +10,10 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 import image from '../../assets/img/parentAtDeskWithComputer@4x-44768ff9f5c861e8f17500ea00afea18.png';
 
 import classes from './Auth.module.scss';
@@ -26,36 +30,38 @@ const Auth: React.FC<Props> = ({ type }) => {
   const authentification = getAuth(app);
   const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState<any>('');
-  // onAuthStateChanged(authentification, (currentUser) => {
 
-  // })
-
-  const handleAction = async () => {
+  const authentificate = async () => {
     if (type === 'Register') {
       createUserWithEmailAndPassword(authentification, email, password)
         .then((response) => {
-          console.log(response);
           const userEmail = authentification.currentUser?.email;
           dispatch(setUser(userEmail));
-          // console.log(authentification.currentUser?.email);
           setCurrentUser(userEmail);
           navigate('/profile');
+          toast.success('Account Registered Successfully!', {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         })
         .catch((error) => {
-          console.log(error);
-          // TODO add notification here React Tostify
+          toast.error(`${error.message}`, {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         });
     } else if (type === 'Sign In') {
       signInWithEmailAndPassword(authentification, email, password)
         .then((response) => {
-          console.log(response);
           const userEmail = authentification.currentUser?.email;
           setCurrentUser(userEmail);
           navigate('/profile');
+          toast.success('Signed In Successfully!', {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         })
         .catch((error) => {
-          console.log(error);
-          // TODO add notification here React Tostify
+          toast.error(`${error.message}`, {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         });
     }
   };
@@ -69,8 +75,9 @@ const Auth: React.FC<Props> = ({ type }) => {
         type={type}
         setEmail={setEmail}
         setPassword={setPassword}
-        handleAction={handleAction}
+        authentificate={authentificate}
       />
+      <ToastContainer />
     </section>
   );
 };

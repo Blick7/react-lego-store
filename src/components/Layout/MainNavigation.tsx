@@ -14,6 +14,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Button from '@mui/material/Button';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const MainNavigation: React.FC = () => {
   const classIsActive = (navData: { isActive: boolean }) =>
@@ -81,6 +82,17 @@ const MainNavigation: React.FC = () => {
               <li>
                 <NavLink to="/register">
                   <Button>Register</Button>
+                </NavLink>
+              </li>
+            )}
+            {userStore.user && (
+              <li>
+                <NavLink to="/profile">
+                  <IconButton>
+                    <AccountCircleIcon
+                      sx={{ fontSize: 30, color: 'success' }}
+                    />
+                  </IconButton>
                 </NavLink>
               </li>
             )}

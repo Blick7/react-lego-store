@@ -1,96 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/user/userSlice';
+
+import { app } from '../../firebase-config';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
 
 import image from '../../assets/img/parentAtDeskWithComputer@4x-44768ff9f5c861e8f17500ea00afea18.png';
-import Checkbox from '@mui/material/Checkbox';
+
 import classes from './Auth.module.scss';
+import AuthForm from './AuthForm';
 
-const Auth = () => {
-  const [emailValue, setEmailValue] = useState<string | null>(null);
-  const [passwordValue, setPasswordValue] = useState<string | null>(null);
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(true);
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(true);
-  const [checkboxIsActive, setCheckboxIsActive] = useState<boolean>(false);
+type Props = {
+  type: string;
+};
 
-  const formSubmitHandler = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log('action');
+const Auth: React.FC<Props> = ({ type }) => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const navigate = useNavigate();
+  const authentification = getAuth(app);
+  const dispatch = useDispatch();
+  const [currentUser, setCurrentUser] = useState<any>('');
+  // onAuthStateChanged(authentification, (currentUser) => {
+
+  // })
+
+  const handleAction = async () => {
+    if (type === 'Register') {
+      createUserWithEmailAndPassword(authentification, email, password)
+        .then((response) => {
+          console.log(response);
+          const userEmail = authentification.currentUser?.email;
+          dispatch(setUser(userEmail));
+          // console.log(authentification.currentUser?.email);
+          setCurrentUser(userEmail);
+          navigate('/profile');
+        })
+        .catch((error) => {
+          console.log(error);
+          // TODO add notification here React Tostify
+        });
+    } else if (type === 'Sign In') {
+      signInWithEmailAndPassword(authentification, email, password)
+        .then((response) => {
+          console.log(response);
+          const userEmail = authentification.currentUser?.email;
+          setCurrentUser(userEmail);
+          navigate('/profile');
+        })
+        .catch((error) => {
+          console.log(error);
+          // TODO add notification here React Tostify
+        });
+    }
   };
-
-  const emailInputHandler = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.FocusEvent<HTMLInputElement>
-  ) => {
-    const email = event.target.value;
-    setEmailValue(email);
-    setEmailIsValid(emailValue!.includes('@') && emailValue!.length > 0);
-  };
-
-  const passwordInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const password = event.target.value;
-    setPasswordValue(password);
-    setPasswordIsValid(password.length > 6);
-  };
-
-  const checkboxHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
-      setCheckboxIsActive(true);
-    } else setCheckboxIsActive(false);
-  };
-
-  const buttonClass = checkboxIsActive ? '' : `${classes['button--disabled']}`;
 
   return (
     <section className={classes.container}>
       <div className={classes.image}>
-        <img src={image} />
+        <img src={image} alt="auth page image" />
       </div>
-      <form className={classes.form} onSubmit={formSubmitHandler}>
-        <label htmlFor="email">Your email address</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="example@domain.com"
-          onChange={emailInputHandler}
-          onBlur={emailInputHandler}
-        ></input>
-        {!emailIsValid && (
-          <div className={classes.notValid}>Email is not valid</div>
-        )}
-        {emailValue?.length === 0 && (
-          <div className={classes.notValid}>Email is required</div>
-        )}
-        <label htmlFor="password">Your password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="* * * * * * *"
-          onChange={passwordInputHandler}
-          onBlur={passwordInputHandler}
-        ></input>
-        {!passwordIsValid && (
-          <div className={classes.notValid}>
-            The password must be at least 6 characters long
-          </div>
-        )}
-        {passwordValue?.length === 0 && (
-          <div className={classes.notValid}>Password is required</div>
-        )}
-        <div className={classes.checkbox}>
-          <Checkbox onChange={checkboxHandler} /> I accept the terms and
-          conditions
-        </div>
-        <p>
-          When you agree to the
-          <a href="https://www.lego.com/en-us/page/terms-and-conditions">
-            Terms and Conditions
-          </a>
-          you also consent to our use of your personal information to process
-          and operate your LEGO® Account. To see how to control your personal
-          data, please see our privacy policy.
-        </p>
-        <button className={buttonClass}>Register</button>
-      </form>
+      <AuthForm
+        type={type}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        handleAction={handleAction}
+      />
     </section>
   );
 };

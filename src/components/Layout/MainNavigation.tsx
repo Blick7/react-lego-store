@@ -1,8 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuth, signOut } from 'firebase/auth';
+import { deleteUser } from '../../store/user/userSlice';
+import { app } from '../../firebase-config';
 import { ReactComponent as Logo } from '../../assets/svg/lego-logo.svg';
+
 import classes from './MainNavigation.module.scss';
+
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -11,6 +18,16 @@ import Button from '@mui/material/Button';
 const MainNavigation: React.FC = () => {
   const classIsActive = (navData: { isActive: boolean }) =>
     navData.isActive ? classes.active : classes['main-list-item'];
+  const userStore = useSelector((state: RootState) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authentification = getAuth(app);
+
+  const signOutHandler = () => {
+    dispatch(deleteUser());
+    signOut(authentification);
+    navigate('/home');
+  };
 
   return (
     <header className={classes.header}>
@@ -51,16 +68,35 @@ const MainNavigation: React.FC = () => {
                 </IconButton>
               </NavLink>
             </li>
-            <li>
-              <Button variant="contained" color="error">
-                Sign In
-              </Button>
-            </li>
-            <li>
-              <NavLink to="/auth">
-                <Button>Register</Button>
-              </NavLink>
-            </li>
+            {!userStore.user && (
+              <li>
+                <NavLink to="/signin">
+                  <Button variant="contained" color="error">
+                    Sign In
+                  </Button>
+                </NavLink>
+              </li>
+            )}
+            {!userStore.user && (
+              <li>
+                <NavLink to="/register">
+                  <Button>Register</Button>
+                </NavLink>
+              </li>
+            )}
+            {userStore.user && (
+              <li>
+                <NavLink to="/signout">
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={signOutHandler}
+                  >
+                    Sign Out
+                  </Button>
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
@@ -69,3 +105,6 @@ const MainNavigation: React.FC = () => {
 };
 
 export default MainNavigation;
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}

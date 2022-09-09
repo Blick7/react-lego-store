@@ -11,11 +11,11 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div>
+    <>
       <MainNavigation />
       <main className={classes.container}>{children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 

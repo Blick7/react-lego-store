@@ -1,4 +1,4 @@
-import ICart, { Item } from '../store/cart/types';
+import ICart from '../store/cart/types';
 
 export const setLocalStorage = ({
   items,

@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Button } from '@mui/material';
 import classes from './MotionBanner.module.scss';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import LinkButton from '../../UI/LinkButton/LinkButton';
 

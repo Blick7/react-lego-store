@@ -1,6 +1,6 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import setLocalStorage from '../../utils/setLocalStorage';
-import ICart, { Item } from './types';
+import ICart from './types';
 
 const localStorageCartItems = localStorage.getItem('itemsCart');
 const localStorageItemsQuantity = localStorage.getItem('totalQuantityCart');
@@ -20,23 +20,6 @@ const cartSlice = createSlice({
   name: 'cart',
   reducers: {
     addItem: (state, action) => {
-      // state.items = state.items.map((item) => {
-      //   if (item.product.id === payload.product.id) {
-      //     if (item.quantity > 10) return item;
-      //     item.quantity++;
-      //     state.totalQuantity += payload.quantity;
-      //     state.totalAmount += payload.product.price * payload.quantity;
-      //     return item;
-      //   } else {
-      //     console.log('hey', payload);
-      //     state.items = [...state.items, payload];
-      //     state.totalQuantity += payload.quantity;
-      //     state.totalAmount += payload.product.price * payload.quantity;
-      //     console.log(current(state));
-      //     return item;
-      //   }
-      // });
-
       const payload = action.payload;
 
       let isUnique = true;

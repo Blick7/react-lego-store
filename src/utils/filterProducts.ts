@@ -1,15 +1,14 @@
 import { IInitialFilters } from '../store/filter/types';
-import { IinitialProducts, Products } from '../store/products/types';
+import { Products } from '../store/products/types';
 
 const filterProducts = (productsState: Products, filters: IInitialFilters) => {
   // filter PRODUCT_TYPE
   let products = Object.values(productsState);
 
   if (filters.categories.PRODUCT_TYPE.length !== 0) {
-    products = products.filter((product) => {
-      console.log(product);
-      // filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
-    });
+    products = products.filter((product) =>
+      filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
+    );
   }
 
   // filter PRICE

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 
-import { IinitialProducts, Products } from './types';
+import { IinitialProducts } from './types';
 import products from '../../products.json';
 
 const initialProducts: IinitialProducts = {

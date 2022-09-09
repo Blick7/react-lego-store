@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
 import LinkButton from '../../UI/LinkButton/LinkButton';
 
 import classes from './KeepInTouch.module.scss';

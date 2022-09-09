@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import DrawStarsRating from '../../../UI/DrawStarsRating';
 import QuantitySelector from '../../../UI/QuantitySelector/QuantitySelector';
 

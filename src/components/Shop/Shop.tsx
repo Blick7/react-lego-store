@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { fetchProducts } from '../../store/products/productsSlice';
 
 import ShopFilters from './ShopFilters';
 import ShopItem from './ShopItem';
@@ -13,9 +14,19 @@ import { IinitialProducts } from '../../store/products/types';
 import filterProducts from '../../utils/filterProducts';
 
 const Shop = () => {
-  let productsState = useSelector((state: RootState) => state.products);
+  const dispatch = useDispatch<AppDispatch>();
+
+  // when app is mounted
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+
   const filters = useSelector((state: RootState) => state.filter);
+  let productsState = useSelector((state: RootState) => state.products);
   const [products, setProducts] = useState<IinitialProducts[]>(productsState);
+
+  console.log(productsState);
 
   useEffect(() => {
     if (
@@ -31,6 +42,8 @@ const Shop = () => {
 
     setProducts(productsState);
   }, [filters]);
+
+  console.log(products);
 
   return (
     <section style={{ margin: '2rem 0', padding: '0 1rem' }}>

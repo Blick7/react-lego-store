@@ -6,8 +6,18 @@ import Product from './components/Shop/Product/Product';
 import CartPage from './components/pages/CartPage';
 import AuthPage from './components/pages/AuthPage';
 import ProfilePage from './components/pages/ProfilePage';
+import { useEffect } from 'react';
+import { fetchProducts } from './store/products/productsSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from './store/store';
 
 function App() {
+  // when app is mounted
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
     <Layout>
       <Routes>

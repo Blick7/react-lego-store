@@ -31,7 +31,6 @@ const ShopItem: React.FC<IProduct> = ({ product }) => {
   const addProductHandler = () => {
     dispatch(addItem({ product, quantity: 1 }));
   };
-
   return (
     <li className={classes.item}>
       <Link to={`/product/${product.id}`}>

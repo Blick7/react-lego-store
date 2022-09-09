@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 
 import { IinitialProducts } from './types';
 
@@ -73,7 +73,7 @@ const initialProducts: IinitialProducts[] = [
   },
   {
     id: '75334',
-    title: 'Inquisitor Transport Scythe™ Inquisitor Transport ',
+    title: 'Inquisitor Transport Scythe™ Inquisitor Transport',
     imgUrl:
       'https://www.lego.com/cdn/cs/set/assets/blt4d307a3c7a83a584/75336.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1',
     bigImgUrl:
@@ -107,6 +107,23 @@ const initialProducts: IinitialProducts[] = [
   },
 ];
 
+// const initialProducts: IinitialProducts = {
+//   products: [],
+//   status: null,
+//   error: null,
+// };
+
+export const fetchProducts = createAsyncThunk(
+  'products/fetchProducts',
+  async () => {
+    const response = await fetch(
+      'https://lego-store-d011a-default-rtdb.firebaseio.com/products.json'
+    );
+    const data = response.json();
+    return data;
+  }
+);
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState: initialProducts,
@@ -116,6 +133,13 @@ export const productsSlice = createSlice({
     },
     setProducts: (state, payload) => {},
     // call sort func here
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      console.log(current(state));
+      state = action.payload;
+      console.log(state);
+    });
   },
 });
 

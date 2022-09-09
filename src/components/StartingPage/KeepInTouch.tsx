@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import LinkButton from '../../UI/LinkButton/LinkButton';
 
@@ -19,7 +20,9 @@ const KeepInTouch = () => {
             first to know about new sets, product updates, promotions and much
             more
           </span>
-          <LinkButton text={'Sign up'} />
+          <Link to="/register">
+            <LinkButton text={'Sign up'} />
+          </Link>
         </div>
       </div>
     </section>

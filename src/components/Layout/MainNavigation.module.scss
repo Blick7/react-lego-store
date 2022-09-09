@@ -33,6 +33,10 @@
 
     cursor: pointer;
   }
+
+  a:hover {
+    border-bottom: 0.3rem solid #000;
+  }
 }
 
 .ul-right {

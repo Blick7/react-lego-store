@@ -3,6 +3,7 @@ import React from 'react';
 import classes from './MotionBanner.module.scss';
 
 import LinkButton from '../../UI/LinkButton/LinkButton';
+import { Link } from 'react-router-dom';
 
 const MotionBanner = () => {
   return (
@@ -20,8 +21,12 @@ const MotionBanner = () => {
           LEGO® Peach™.
         </span>
         <div>
-          <LinkButton text={'Shop now'} />
-          <LinkButton text={'Learn more'} />
+          <Link to="/shop">
+            <LinkButton text={'Shop now'} />
+          </Link>
+          <a href="https://www.lego.com/en-us/themes/super-mario/about?icmp=TH-TAB-Standard-MAR_In_page_navigation_About-TH-MAR-KTDMH8H10J">
+            <LinkButton text={'Learn more'} />
+          </a>
         </div>
       </div>
     </section>

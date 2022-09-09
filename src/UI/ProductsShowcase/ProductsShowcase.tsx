@@ -2,6 +2,7 @@ import React from 'react';
 
 import classes from './ProductsShowcase.module.scss';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Link } from 'react-router-dom';
 interface IProps {
   title: string;
   items: {
@@ -25,7 +26,9 @@ const ProductsShowcase = (props: IProps) => {
               <h3>{item.title}</h3>
               <div className={classes.description}>{item.description}</div>
               <div className={classes.button}>
-                <span>Show now</span>
+                <Link to="/shop">
+                  <span>Shop now</span>
+                </Link>
                 <KeyboardArrowRightIcon />
               </div>
             </div>

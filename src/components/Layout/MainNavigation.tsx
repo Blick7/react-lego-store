@@ -49,9 +49,7 @@ const MainNavigation: React.FC = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact-us" className={classIsActive}>
-                CONTACT US
-              </NavLink>
+              <a href="https://www.lego.com/en-us/service">CONTACT US</a>
             </li>
           </ul>
           <ul className={classes['ul-right']}>

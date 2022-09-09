@@ -1,10 +1,18 @@
 import { createSlice, current } from '@reduxjs/toolkit';
+import setLocalStorage from '../../utils/setLocalStorage';
 import ICart, { Item } from './types';
 
+const localStorageCartItems = localStorage.getItem('itemsCart');
+const localStorageItemsQuantity = localStorage.getItem('totalQuantityCart');
+const localStorageItemsAmount = localStorage.getItem('totalAmountCart');
+const parsedItems = JSON.parse(localStorageCartItems!);
+const parsedQuantity = JSON.parse(localStorageItemsQuantity!);
+const parsedAmount = JSON.parse(localStorageItemsAmount!);
+
 const initialCart: ICart = {
-  items: [],
-  totalQuantity: 0,
-  totalAmount: 0,
+  items: parsedItems || [],
+  totalQuantity: parsedQuantity || 0,
+  totalAmount: parsedAmount || 0,
 };
 
 const cartSlice = createSlice({
@@ -50,6 +58,8 @@ const cartSlice = createSlice({
         state.totalQuantity += payload.quantity;
         state.totalAmount += payload.product.price * payload.quantity;
       }
+
+      setLocalStorage(state);
     },
     removeItem: (state, action) => {
       const payload = action.payload;
@@ -74,6 +84,8 @@ const cartSlice = createSlice({
         }
         return item;
       });
+
+      setLocalStorage(state);
     },
   },
 });

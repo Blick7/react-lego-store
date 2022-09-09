@@ -1,16 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem, removeItem } from '../../store/cart/cartSlice';
-import { IinitialProducts } from '../../store/products/types';
 import QuantitySelector from '../../UI/QuantitySelector/QuantitySelector';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 import classes from './CartItem.module.scss';
-import { Product } from '../../store/cart/types';
+import { Item } from '../../store/cart/types';
 
 type Props = {
-  item: Product;
+  item: Item;
 };
 
 const CartItem: React.FC<Props> = ({ item }) => {
@@ -25,7 +24,6 @@ const CartItem: React.FC<Props> = ({ item }) => {
       dispatch(removeItem({ product, quantity: 1 }));
     }
   };
-
   return (
     <div className={classes.item}>
       <div className={classes.image}>

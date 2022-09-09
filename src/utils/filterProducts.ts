@@ -1,15 +1,15 @@
 import { IInitialFilters } from '../store/filter/types';
-import { IinitialProducts } from '../store/products/types';
+import { IinitialProducts, Products } from '../store/products/types';
 
-const filterProducts = (
-  productsState: IinitialProducts[],
-  filters: IInitialFilters
-) => {
+const filterProducts = (productsState: Products, filters: IInitialFilters) => {
   // filter PRODUCT_TYPE
+  let products = Object.values(productsState);
+
   if (filters.categories.PRODUCT_TYPE.length !== 0) {
-    productsState = productsState.filter((product) =>
-      filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
-    );
+    products = products.filter((product) => {
+      console.log(product);
+      // filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
+    });
   }
 
   // filter PRICE
@@ -30,28 +30,28 @@ const filterProducts = (
   });
 
   if (filters.categories.PRICE.length !== 0) {
-    productsState = productsState.filter((product) => {
+    products = products.filter((product) => {
       return product.price >= priceMin && product.price <= priceMax;
     });
   }
 
   // filter THEME
   if (filters.categories.THEME.length !== 0) {
-    productsState = productsState.filter((product) =>
+    products = products.filter((product) =>
       filters.categories.THEME.includes(product.theme)
     );
   }
 
   // filter AGE
   if (filters.categories.AGE.length !== 0) {
-    productsState = productsState.filter((product) =>
+    products = products.filter((product) =>
       filters.categories.AGE.includes(product.age)
     );
   }
 
   // filter AVALIABILITY
   if (filters.categories.AVALIABILITY.length !== 0) {
-    productsState = productsState.filter((product) =>
+    products = products.filter((product) =>
       filters.categories.AVALIABILITY.includes(product.avaliability)
     );
   }
@@ -74,19 +74,19 @@ const filterProducts = (
   });
 
   if (filters.categories.PIECE_COUNT.length !== 0) {
-    productsState = productsState.filter((product) => {
+    products = products.filter((product) => {
       return product.pieces >= piecesMin && product.pieces <= piecesMax;
     });
   }
 
   // filter FEATURED
   if (filters.categories.FEATURED.length !== 0) {
-    productsState = productsState.filter((product) =>
+    products = products.filter((product) =>
       filters.categories.FEATURED.includes(product.featured)
     );
   }
 
-  return productsState;
+  return products;
 };
 
 export default filterProducts;

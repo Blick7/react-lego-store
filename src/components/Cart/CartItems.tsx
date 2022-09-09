@@ -1,12 +1,11 @@
 import React from 'react';
-import { Product } from '../../store/cart/types';
-import { IinitialProducts } from '../../store/products/types';
+import { Item } from '../../store/cart/types';
 import CartItem from './CartItem';
 
 import classes from './CartItems.module.scss';
 
 type Props = {
-  items: Product[];
+  items: Item[];
 };
 
 const CartItems: React.FC<Props> = ({ items }) => {

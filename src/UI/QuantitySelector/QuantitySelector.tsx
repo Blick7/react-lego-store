@@ -1,28 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem, removeItem } from '../../store/cart/cartSlice';
 
 import classes from './QuantitySelector.module.scss';
 
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import { Product } from '../../store/cart/types';
 
 type Props = {
   value: number;
   actions?: (type: string) => void;
 };
 
-type Obj = {
-  type: string;
-};
-
 const QuantitySelector: React.FC<Props> = ({ value, actions }) => {
   const [inputValue, setInputValue] = useState(value);
   const [removeBtnActive, setRemoveBtnActive] = useState(value > 1);
   const [addBtnActive, setAddBtnActive] = useState(value <= 10);
-
-  const dispatch = useDispatch();
 
   const removeBtnClass = removeBtnActive
     ? `${classes.button}`
@@ -35,8 +27,6 @@ const QuantitySelector: React.FC<Props> = ({ value, actions }) => {
   const max = 10;
 
   const removeItemHandler = () => {
-    console.log(inputValue);
-
     if (inputValue === min) {
       setRemoveBtnActive(false);
       return;
@@ -61,7 +51,6 @@ const QuantitySelector: React.FC<Props> = ({ value, actions }) => {
       setAddBtnActive(false);
       return;
     }
-    // if (inputValue !== null) {
     if (inputValue <= 10) {
       setInputValue((prevValue) => prevValue + 1);
     }
@@ -75,7 +64,6 @@ const QuantitySelector: React.FC<Props> = ({ value, actions }) => {
 
       if (actions) actions('ADD_ITEM');
     }
-    // }
   };
 
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -117,6 +117,3 @@ const MainNavigation: React.FC = () => {
 };
 
 export default MainNavigation;
-function dispatch(arg0: any) {
-  throw new Error('Function not implemented.');
-}

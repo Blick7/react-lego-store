@@ -1,4 +1,13 @@
 export interface IinitialProducts {
+  products: Products;
+  status: string;
+}
+
+export type Products = {
+  [key: string]: Product;
+};
+
+export type Product = {
   id: string;
   title: string;
   imgUrl: string;
@@ -12,4 +21,4 @@ export interface IinitialProducts {
   theme: string;
   age: string;
   avaliability: string;
-}
+};

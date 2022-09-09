@@ -1,13 +1,13 @@
-import { IinitialProducts } from '../products/types';
+import { Product } from '../products/types';
 
 interface ICart {
-  items: Product[];
+  items: Item[];
   totalQuantity: number;
   totalAmount: number;
 }
 
-export type Product = {
-  product: IinitialProducts;
+export type Item = {
+  product: Product;
   quantity: number;
 };
 

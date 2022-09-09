@@ -37,14 +37,7 @@ const Product = () => {
         </div>
         <ProductAttributes age={age} pieces={pieces} id={id} />
       </div>
-      <ProductOverview
-        rating={rating}
-        featured={featured}
-        title={title}
-        price={price}
-        avaliability={avaliability}
-        id={id}
-      />
+      <ProductOverview product={product!} />
     </section>
   );
 };

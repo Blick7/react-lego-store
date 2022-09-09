@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { addItem, removeItem } from '../../../store/cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 import DrawStarsRating from '../../../UI/DrawStarsRating';
 import QuantitySelector from '../../../UI/QuantitySelector/QuantitySelector';
 
@@ -9,25 +13,40 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import DescriptionIcon from '@mui/icons-material/Description';
 
 import classes from './ProductOverview.module.scss';
+import { Product } from '../../../store/products/types';
+import { RootState } from '../../../store/store';
 
 type Props = {
-  rating: number;
-  featured: string;
-  title: string;
-  price: number;
-  avaliability: string;
-  id: string;
+  product: Product;
 };
 
-const ProductOverview: React.FC<Props> = ({
-  rating,
-  featured,
-  title,
-  price,
-  avaliability,
-  id,
-}) => {
+const ProductOverview: React.FC<Props> = ({ product }) => {
+  const { featured, rating, title, price, avaliability, id } = product;
   const featuredClass = featured.length !== 0 ? classes.featured : '';
+  const [productQuantity, setProductQuantity] = useState(1);
+  const cartState = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
+  const itemFromCart = cartState.items.filter(
+    (item) => item.product.id === product.id
+  );
+  console.log(itemFromCart);
+  const valueHandler = (num: number) => {
+    setProductQuantity(num);
+  };
+
+  const addProductHandler = () => {
+    const itemQuantity = itemFromCart[0]?.quantity;
+    // 10 - is max quantity for one item
+
+    if (itemQuantity > 10) {
+      return;
+    } else if (itemQuantity + productQuantity > 10) {
+      return;
+    } else {
+      dispatch(addItem({ product, quantity: productQuantity }));
+    }
+  };
 
   return (
     <div className={classes.overview}>
@@ -45,7 +64,7 @@ const ProductOverview: React.FC<Props> = ({
       <div className={classes.price}>${price}</div>
       <span className={classes.avaliability}>{avaliability}</span>
       <div style={{ marginTop: '1.5rem' }}>
-        <QuantitySelector value={1} />
+        <QuantitySelector value={1} getValue={valueHandler} />
       </div>
       <div
         style={{
@@ -55,7 +74,12 @@ const ProductOverview: React.FC<Props> = ({
           marginTop: '2rem',
         }}
       >
-        <button className={classes['cart-add-button']}>Add to Cart</button>
+        <button
+          className={classes['cart-add-button']}
+          onClick={addProductHandler}
+        >
+          Add to Cart
+        </button>
         <button className={classes.wishlist}>
           <FavoriteBorderIcon />
         </button>

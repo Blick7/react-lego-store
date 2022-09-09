@@ -16,16 +16,13 @@ import DrawStarsRating from '../DrawStarsRating';
 import SliderAddButton from '../../UI/SliderAddButton/SliderAddButton';
 
 import classes from './ProductsCarousel.module.scss';
+import { Product, Products } from '../../store/products/types';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../store/cart/cartSlice';
 
 interface IProps {
   title: string;
-  items: {
-    url: string;
-    title: string;
-    rating: number;
-    tag: string;
-    price: string;
-  }[];
+  items: Products;
 }
 
 const ProductsCarousel = (props: IProps) => {
@@ -42,6 +39,15 @@ const ProductsCarousel = (props: IProps) => {
   const rightBtnClass = rightBtnDisabled
     ? `${classes['swiper-button-next']} ${classes['swiper-button-disabled']}`
     : classes['swiper-button-next'];
+
+  const products = Object.values(props.items);
+
+  const dispatch = useDispatch();
+
+  const addProductHandler = (product: Product) => {
+    dispatch(addItem({ product, quantity: 1 }));
+  };
+
   return (
     <>
       <div className={classes.container}>
@@ -93,7 +99,7 @@ const ProductsCarousel = (props: IProps) => {
                 setRightBtnDisabled(false);
               } else if (
                 swiper.realIndex ===
-                props.items.length - +slidesPerView
+                products.length - +slidesPerView
               ) {
                 setRightBtnDisabled(true);
                 setLeftBtnDisabled(false);
@@ -104,19 +110,25 @@ const ProductsCarousel = (props: IProps) => {
             }
           }}
         >
-          {props.items.map((item, index) => {
+          {products.map((item, index) => {
+            const featuredClass =
+              item.featured.length === 0 ? '' : `${classes.featured}`;
             return (
               <SwiperSlide key={index} className={classes['swiper-slide']}>
                 <div>
                   <div className={classes['image-container']}>
-                    <img className={classes.img} src={item.url} alt="hello" />
+                    <img
+                      className={classes.img}
+                      src={item.imgUrl}
+                      alt="hello"
+                    />
                     <div className={classes.wishlist}>
                       <FavoriteBorderIcon
                         className={classes['wishlist-icon']}
                       />
                       <span>Add to wish list</span>
                     </div>
-                    <div className={classes.tag}>{item.tag}</div>
+                    <div className={featuredClass}>{item.featured}</div>
                   </div>
                   <div className={classes.description}>
                     <div>{item.title}</div>
@@ -124,7 +136,7 @@ const ProductsCarousel = (props: IProps) => {
                       <DrawStarsRating rating={item.rating} />
                     </div>
                     <div>{item.price}</div>
-                    <SliderAddButton />
+                    <SliderAddButton onClick={() => addProductHandler(item)} />
                   </div>
                 </div>
               </SwiperSlide>

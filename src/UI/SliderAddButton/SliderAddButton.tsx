@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import classes from './SliderAddButton.module.scss'
+import classes from './SliderAddButton.module.scss';
 
-const SliderAddButton = () => {
+type Props = {
+  onClick: () => void;
+};
+
+const SliderAddButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <button className={classes.button}>Add to Cart</button>
-  )
-}
+    <button className={classes.button} onClick={onClick}>
+      Add to Cart
+    </button>
+  );
+};
 
-export default SliderAddButton
+export default SliderAddButton;

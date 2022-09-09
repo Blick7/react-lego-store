@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addItem, removeItem } from '../../store/cart/cartSlice';
+import { addItem } from '../../store/cart/cartSlice';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 

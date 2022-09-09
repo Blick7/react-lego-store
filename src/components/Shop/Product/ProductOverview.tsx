@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { addItem, removeItem } from '../../../store/cart/cartSlice';
+import { addItem } from '../../../store/cart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DrawStarsRating from '../../../UI/DrawStarsRating';
@@ -30,7 +30,6 @@ const ProductOverview: React.FC<Props> = ({ product }) => {
   const itemFromCart = cartState.items.filter(
     (item) => item.product.id === product.id
   );
-  console.log(itemFromCart);
   const valueHandler = (num: number) => {
     setProductQuantity(num);
   };

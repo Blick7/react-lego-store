@@ -9,7 +9,6 @@ type Props = {
 };
 
 const CartItems: React.FC<Props> = ({ items }) => {
-  console.log(items);
   return (
     <div className={classes.wrapper}>
       <h3>Avaliable now</h3>

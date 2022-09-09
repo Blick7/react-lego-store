@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { fetchProducts } from '../../store/products/productsSlice';
 
@@ -10,11 +10,7 @@ import Box from '@mui/material/Box';
 
 import classes from './Shop.module.scss';
 
-import {
-  IinitialProducts,
-  Products,
-  Product,
-} from '../../store/products/types';
+import { Product } from '../../store/products/types';
 import filterProducts from '../../utils/filterProducts';
 
 const Shop = () => {
@@ -27,29 +23,26 @@ const Shop = () => {
 
   const status = productsState.status;
 
-  // useEffect(() => {
-  //   if (
-  //     Object.values(filters.categories).every(
-  //       (category) => category.length === 0
-  //     )
-  //   ) {
-  //     setProducts(Object.values(productsState.products));
-  //     return;
-  //   }
+  useEffect(() => {
+    if (
+      Object.values(filters.categories).every(
+        (category) => category.length === 0
+      )
+    ) {
+      setProducts(Object.values(productsState.products));
+      return;
+    }
 
-  //   let products = Object.values(productsState.products);
-  //   products = filterProducts(productsState.products, filters);
-  //   setProducts(products);
-  // }, [filters]);
+    let products = Object.values(productsState.products);
+    products = filterProducts(productsState.products, filters);
+    setProducts(products);
+  }, [filters]);
 
   // when app is mounted
   useEffect(() => {
     dispatch(fetchProducts());
-
-    console.log('fun', new Date().getSeconds());
   }, [dispatch]);
 
-  console.log(products, new Date().getSeconds());
   return (
     <section style={{ margin: '2rem 0', padding: '0 1rem' }}>
       <div style={{ display: 'flex' }}>

@@ -23,6 +23,20 @@
     font-weight: 700;
   }
 
+  & .out-of-stock {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+    font-weight: 700;
+  }
+
+  & .coming-soon {
+    color: rgb(124, 124, 121);
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+    font-weight: 700;
+  }
+
   & .quantity {
     display: flex;
     margin-top: 1.5rem;

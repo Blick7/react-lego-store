@@ -47,6 +47,13 @@ const ProductOverview: React.FC<Props> = ({ product }) => {
     }
   };
 
+  let avaliabilityClass;
+  if (avaliability === 'Out of Stock')
+    avaliabilityClass = `${classes['out-of-stock']}`;
+  else if (avaliability === 'Coming Soon')
+    avaliabilityClass = `${classes['coming-soon']}`;
+  else avaliabilityClass = `${classes.avaliability}`;
+  // Coming Soon
   return (
     <div className={classes.overview}>
       <div
@@ -61,7 +68,7 @@ const ProductOverview: React.FC<Props> = ({ product }) => {
       </div>
       <h3>{title}</h3>
       <div className={classes.price}>${price}</div>
-      <span className={classes.avaliability}>{avaliability}</span>
+      <span className={avaliabilityClass}>{avaliability}</span>
       <div style={{ marginTop: '1.5rem' }}>
         <QuantitySelector value={1} getValue={valueHandler} />
       </div>

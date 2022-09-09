@@ -45,7 +45,7 @@
 }
 
 .active {
-  color: red;
+  border-bottom: 0.3rem solid #000;
 
   &:hover {
     border-bottom: 0.3rem solid #000;

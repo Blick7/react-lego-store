@@ -98,16 +98,14 @@ const ShopFilters = () => {
   return (
     <aside
       style={{
-        maxWidth: '18rem',
-        width: '100%',
-
-        marginRight: '2rem',
+        marginRight: '1rem',
       }}
     >
       <div
         style={{
           border: '0.04rem solid rgba(0, 0, 0, 0.1)',
           borderBottom: '0.2rem solid rgba(0, 0, 0, 0.50)',
+          width: '16rem',
         }}
       >
         <Button

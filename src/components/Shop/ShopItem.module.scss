@@ -1,7 +1,7 @@
 .item {
   display: flex;
   flex-direction: column;
-  flex: 0 1 25%;
+  flex: 0 1 33.33%;
   // justify-content: space-between;
   position: relative;
   overflow: hidden;
@@ -10,14 +10,14 @@
   border-color: rgb(224, 224, 224);
   border-width: 0 1px 1px 0;
 
-  height: 36rem;
+  height: 40rem;
 
   & a:hover {
     text-decoration: underline;
   }
 
   & .image {
-    padding: 1rem;
+    padding: 4rem;
     text-align: center;
     cursor: pointer;
     transition: 0.5s;

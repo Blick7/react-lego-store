@@ -3,12 +3,12 @@ import React from 'react';
 import classes from './ProductAttributes.module.scss';
 
 type Props = {
-  age: string;
+  ages: string;
   pieces: number;
   id: string;
 };
 
-const ProductAttributes: React.FC<Props> = ({ age, pieces, id }) => {
+const ProductAttributes: React.FC<Props> = ({ ages, pieces, id }) => {
   return (
     <div className={classes.items}>
       <div className={classes.item}>
@@ -28,7 +28,7 @@ const ProductAttributes: React.FC<Props> = ({ age, pieces, id }) => {
             </g>
           </svg>
         </div>
-        <div className={classes.value}>{age}</div>
+        <div className={classes.value}>{ages}</div>
         <div className={classes.title}>Ages</div>
       </div>
       <div className={classes.item}>

@@ -17,8 +17,7 @@ export type Product = {
   featured: string;
   pieces: number;
   ages: string;
-  PRODUCT_TYPE: string;
+  productType: string;
   theme: string;
-  age: string;
   avaliability: string;
 };

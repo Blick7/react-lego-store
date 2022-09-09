@@ -2,12 +2,12 @@ import { IInitialFilters } from '../store/filter/types';
 import { Products } from '../store/products/types';
 
 const filterProducts = (productsState: Products, filters: IInitialFilters) => {
-  // filter PRODUCT_TYPE
+  // filter productType
   let products = Object.values(productsState);
 
   if (filters.categories.PRODUCT_TYPE.length !== 0) {
     products = products.filter((product) =>
-      filters.categories.PRODUCT_TYPE.includes(product.PRODUCT_TYPE)
+      filters.categories.PRODUCT_TYPE.includes(product.productType)
     );
   }
 
@@ -44,7 +44,7 @@ const filterProducts = (productsState: Products, filters: IInitialFilters) => {
   // filter AGE
   if (filters.categories.AGE.length !== 0) {
     products = products.filter((product) =>
-      filters.categories.AGE.includes(product.age)
+      filters.categories.AGE.includes(product.ages)
     );
   }
 

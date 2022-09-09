@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { RootState } from '../../../store/store';
@@ -25,9 +25,13 @@ const Product = () => {
     price,
     featured,
     pieces,
-    age,
+    ages,
     avaliability,
   } = product!;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className={classes.section}>
@@ -35,7 +39,7 @@ const Product = () => {
         <div className={classes.image}>
           <img src={product?.bigImgUrl} alt={product?.title} />
         </div>
-        <ProductAttributes age={age} pieces={pieces} id={id} />
+        <ProductAttributes ages={ages} pieces={pieces} id={id} />
       </div>
       <ProductOverview product={product!} />
     </section>

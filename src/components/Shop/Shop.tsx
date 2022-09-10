@@ -12,6 +12,7 @@ import classes from './Shop.module.scss';
 
 import { Product } from '../../store/products/types';
 import filterProducts from '../../utils/filterProducts';
+import LoadingSpinner from '../../UI/LoadingSpinner';
 
 const Shop = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -48,7 +49,7 @@ const Shop = () => {
       <div style={{ display: 'flex' }}>
         <ShopFilters />
         <Box sx={{ flexGrow: 1 }}>
-          {status === 'loading' && <p>Loading...</p>}
+          {status === 'loading' && <LoadingSpinner />}
           <ul className={classes.items}>
             {products.map((product) => (
               <ShopItem key={product.id} product={product} />

@@ -19,6 +19,7 @@ import classes from './ProductsCarousel.module.scss';
 import { Product, Products } from '../../store/products/types';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../store/cart/cartSlice';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   title: string;
@@ -114,22 +115,24 @@ const ProductsCarousel = (props: IProps) => {
             const featuredClass =
               item.featured.length === 0 ? '' : `${classes.featured}`;
             return (
-              <SwiperSlide key={index} className={classes['swiper-slide']}>
+              <SwiperSlide key={item.id} className={classes['swiper-slide']}>
                 <div>
-                  <div className={classes['image-container']}>
-                    <img
-                      className={classes.img}
-                      src={item.imgUrl}
-                      alt="hello"
-                    />
-                    <div className={classes.wishlist}>
-                      <FavoriteBorderIcon
-                        className={classes['wishlist-icon']}
+                  <Link to={`/product/${item.id}`}>
+                    <div className={classes['image-container']}>
+                      <img
+                        className={classes.img}
+                        src={item.imgUrl}
+                        alt="hello"
                       />
-                      <span>Add to wish list</span>
+                      <div className={classes.wishlist}>
+                        <FavoriteBorderIcon
+                          className={classes['wishlist-icon']}
+                        />
+                        <span>Add to wish list</span>
+                      </div>
+                      <div className={featuredClass}>{item.featured}</div>
                     </div>
-                    <div className={featuredClass}>{item.featured}</div>
-                  </div>
+                  </Link>
                   <div className={classes.description}>
                     <div>{item.title}</div>
                     <div>

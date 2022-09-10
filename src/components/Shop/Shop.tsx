@@ -13,6 +13,7 @@ import classes from './Shop.module.scss';
 import { Product } from '../../store/products/types';
 import filterProducts from '../../utils/filterProducts';
 import LoadingSpinner from '../../UI/LoadingSpinner';
+import ProductNotFound from '../../UI/ProductNotFound';
 
 const Shop = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -55,6 +56,7 @@ const Shop = () => {
               <ShopItem key={product.id} product={product} />
             ))}
           </ul>
+          {products.length === 0 && <ProductNotFound />}
         </Box>
       </div>
     </section>

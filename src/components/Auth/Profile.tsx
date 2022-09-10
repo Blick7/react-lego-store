@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useRef, useState } from 'react';
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,6 +29,10 @@ const Profile = () => {
   if (!userEmail) {
     navigate('/');
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const changePasswordHandler = () => {
     const password = inputRef.current?.value;

@@ -19,7 +19,7 @@ const ProductsShowcase = (props: IProps) => {
       <div className={classes.items}>
         {props.items.map((item, index) => {
           return (
-            <div className={classes.item} key={index}>
+            <div data-aos="fade-up" className={classes.item} key={index}>
               <div className={classes.image}>
                 <img src={item.img} alt={item.title}></img>
               </div>

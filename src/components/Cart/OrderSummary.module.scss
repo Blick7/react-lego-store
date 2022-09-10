@@ -6,6 +6,7 @@
 .wrapper {
   background: rgb(248, 248, 248);
   padding: 1rem;
+  animation: show 2s;
 
   & h2 {
     font-size: 1.125rem;
@@ -49,6 +50,7 @@
   background: rgb(248, 248, 248);
   padding: 1rem;
   margin-top: 1rem;
+  animation: show 2s;
 
   & h2 {
     border-bottom: 0.1rem solid rgb(224, 224, 224);
@@ -117,4 +119,15 @@
 
 .order-button:hover {
   background: #fff;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }

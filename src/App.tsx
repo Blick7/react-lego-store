@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import Layout from './components/Layout/Layout';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoadingSpinner from './UI/LoadingSpinner';
@@ -9,6 +9,9 @@ import LoadingSpinner from './UI/LoadingSpinner';
 // import AuthPage from './components/pages/AuthPage';
 // import ProfilePage from './components/pages/ProfilePage';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+
 const HomePage = React.lazy(() => import('./components/pages/HomePage'));
 const ShopPage = React.lazy(() => import('./components/pages/ShopPage'));
 const Product = React.lazy(() => import('./components/Shop/Product/Product'));
@@ -17,6 +20,9 @@ const AuthPage = React.lazy(() => import('./components/pages/AuthPage'));
 const ProfilePage = React.lazy(() => import('./components/pages/ProfilePage'));
 
 function App() {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
   return (
     <Layout>
       <Suspense fallback={<LoadingSpinner />}>

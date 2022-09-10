@@ -4,7 +4,7 @@ import classes from './CookieSignPosting.module.scss';
 
 const CookieSignPosting = () => {
   return (
-    <section className={classes.container}>
+    <section className={classes.container} data-aos="fade-right">
       <div className={classes.cookieGuy}>
         <img
           src="https://www.lego.com/_next/static/images/cookieguy-a8400ece3d416842cb83d9f1efc22662.png"

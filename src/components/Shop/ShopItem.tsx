@@ -13,11 +13,15 @@ type Product = {
   id: string;
   title: string;
   imgUrl: string;
+  bigImgUrl: string;
   rating: number;
   price: number;
   featured: string;
   pieces: number;
   ages: string;
+  productType: string;
+  theme: string;
+  avaliability: string;
 };
 
 interface IProduct {
@@ -27,10 +31,26 @@ interface IProduct {
 const ShopItem: React.FC<IProduct> = ({ product }) => {
   const featuredClass = product.featured.length !== 0 ? classes.featured : '';
   const dispatch = useDispatch();
-
   const addProductHandler = () => {
+    if (
+      product.avaliability === 'Out of Stock' ||
+      product.avaliability === 'Coming Soon'
+    ) {
+      return;
+    }
     dispatch(addItem({ product, quantity: 1 }));
   };
+
+  let buttonClass;
+  if (
+    product.avaliability === 'Out of Stock' ||
+    product.avaliability === 'Coming Soon'
+  ) {
+    buttonClass = `${classes['not-avaliable-button']}`;
+  } else {
+    buttonClass = `${classes.button}`;
+  }
+
   return (
     <li className={classes.item}>
       <Link to={`/product/${product.id}`}>
@@ -53,8 +73,8 @@ const ShopItem: React.FC<IProduct> = ({ product }) => {
           </div>
           <div className={classes.price}>{'$' + product.price}</div>
         </div>
-        <button className={classes.button} onClick={addProductHandler}>
-          Add to Cart
+        <button className={buttonClass} onClick={addProductHandler}>
+          {product.avaliability}
         </button>
       </div>
     </li>

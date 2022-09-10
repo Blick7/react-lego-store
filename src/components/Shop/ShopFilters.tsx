@@ -7,6 +7,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import type {} from '@mui/lab/themeAugmentation';
 import FiltersAccordion from '../../UI/FiltersAccordion';
+import { useDispatch } from 'react-redux';
+import { resetFilter } from '../../store/filter/filterSlice';
 
 const theme = createTheme({
   components: {
@@ -45,7 +47,7 @@ const theme = createTheme({
 const filters = [
   {
     title: 'PRODUCT TYPE',
-    category: 'PRODUCT_TYPE',
+    category: 'productType',
     options: [
       'Home decor',
       'Sets',
@@ -57,12 +59,12 @@ const filters = [
   },
   {
     title: 'PRICE',
-    category: 'PRICE',
+    category: 'price',
     options: ['$0 - $25', '$25 - $50', '$50 - $75', '$75 - $100', '$100+'],
   },
   {
     title: 'THEME',
-    category: 'THEME',
+    category: 'theme',
     options: [
       'Star Wars',
       'Batman',
@@ -74,27 +76,33 @@ const filters = [
   },
   {
     title: 'AGE',
-    category: 'AGE',
+    category: 'ages',
     options: ['4+', '6+', '9+', '13+', '18+'],
   },
   {
     title: 'AVALIABILITY',
-    category: 'AVALIABILITY',
+    category: 'avaliability',
     options: ['Avaliable Now', 'Out of Stock', 'Back Order', 'Coming Soon'],
   },
   {
     title: 'PIECE COUNT',
-    category: 'PIECE_COUNT',
+    category: 'pieces',
     options: ['1-99', '100-249', '250-499', '500-999', '1000-1999', '2000+'],
   },
   {
     title: 'FEATURED',
-    category: 'FEATURED',
+    category: 'featured',
     options: ['Exclusives', 'Hard to find', 'New', 'Pre-order'],
   },
 ];
 
 const ShopFilters = () => {
+  const dispatch = useDispatch();
+
+  const btnResetAllhandler = () => {
+    dispatch(resetFilter());
+  };
+
   return (
     <aside
       style={{
@@ -112,6 +120,7 @@ const ShopFilters = () => {
           variant="text"
           fullWidth
           sx={{ padding: '1rem', borderRadius: '0' }}
+          onClick={btnResetAllhandler}
         >
           Reset All
         </Button>

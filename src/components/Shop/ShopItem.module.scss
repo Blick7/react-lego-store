@@ -107,6 +107,19 @@
   transition: 0.3s;
 }
 
+.not-avaliable-button {
+  width: 100%;
+  background-color: rgb(255, 242, 242);
+  border-color: rgb(255, 242, 242);
+  color: rgb(208, 2, 27);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  margin-top: 0.6rem;
+}
+
 .button:hover {
   background-color: #fff;
 }

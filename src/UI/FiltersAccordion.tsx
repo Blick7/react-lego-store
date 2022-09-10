@@ -7,8 +7,9 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilter, removeFilter } from '../store/filter/filterSlice';
+import { RootState } from '../store/store';
 
 type Options = {
   title: string;
@@ -23,6 +24,14 @@ interface IProps {
 const FiltersAccordion: React.FC<IProps> = ({ filters }) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
+
+  const filterStore = useSelector((state: RootState) => state.filter);
+
+  const isChecked = (option: string, category: string): boolean => {
+    if (filterStore.categories[category].includes(option)) return true;
+
+    return false;
+  };
 
   return (
     <>
@@ -41,7 +50,9 @@ const FiltersAccordion: React.FC<IProps> = ({ filters }) => {
                   {item.options.map((option) => (
                     <FormControlLabel
                       key={option}
-                      control={<Checkbox />}
+                      control={
+                        <Checkbox checked={isChecked(option, item.category)} />
+                      }
                       label={option}
                       id={option}
                       onChange={(event) => {

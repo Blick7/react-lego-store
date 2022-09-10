@@ -1,16 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 import { IInitialFilters } from './types';
 
 const initialFilters: IInitialFilters = {
   categories: {
-    PRODUCT_TYPE: [],
-    PRICE: [],
-    THEME: [],
-    AGE: [],
-    AVALIABILITY: [],
-    PIECE_COUNT: [],
-    FEATURED: [],
+    productType: [],
+    price: [],
+    theme: [],
+    ages: [],
+    avaliability: [],
+    pieces: [],
+    featured: [],
   },
 };
 
@@ -31,9 +31,15 @@ export const filterSlice = createSlice({
         (item) => item !== option
       );
     },
+    resetFilter: (state) => {
+      const categories = state.categories;
+      for (let category in categories) {
+        state.categories[category] = [];
+      }
+    },
   },
 });
 
-export const { setFilter, removeFilter } = filterSlice.actions;
+export const { setFilter, removeFilter, resetFilter } = filterSlice.actions;
 
 export default filterSlice.reducer;

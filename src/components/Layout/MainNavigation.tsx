@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
@@ -23,6 +23,9 @@ const MainNavigation: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const authentification = getAuth(app);
+  const [navBtnIsActive, setNavBtnIsActive] = useState(false);
+  const [navIsActive, setNavIsActive] = useState(false);
+  const [headerBtnIsActive, setHeaderButtonIsActive] = useState(true);
 
   const signOutHandler = () => {
     dispatch(deleteUser());
@@ -30,13 +33,62 @@ const MainNavigation: React.FC = () => {
     navigate('/home');
   };
 
+  const navButtonHandler = (event: React.MouseEvent) => {
+    setNavIsActive((prevValue) => !prevValue);
+    setNavBtnIsActive((prevValue) => !prevValue);
+    setHeaderButtonIsActive((prevValue) => !prevValue);
+    event.stopPropagation();
+  };
+
+  const navBtnClass = navBtnIsActive
+    ? `${classes['nav-button']} ${classes['nav-button--active']}`
+    : `${classes['nav-button--disabled']}`;
+
+  const headerBtnClass = headerBtnIsActive
+    ? `${classes['nav-button']} ${classes['header-nav-button']}`
+    : `${classes['nav-button--disabled']}`;
+
+  const navClass = navIsActive
+    ? `${classes.nav} ${classes['nav-active']}`
+    : `${classes.nav}`;
+
+  useEffect(() => {
+    const bodyEventHandler = () => {
+      setNavIsActive(false);
+      setHeaderButtonIsActive(true);
+      setNavBtnIsActive(false);
+    };
+
+    document.body.addEventListener('click', bodyEventHandler);
+  }, []);
+
   return (
-    <header className={classes.header}>
+    <header
+      className={classes.header}
+      onClick={() => {
+        setNavIsActive(false);
+        setHeaderButtonIsActive(true);
+        setNavBtnIsActive(false);
+      }}
+    >
       <div className={classes.wrapper}>
-        <nav>
-          <NavLink to="/home" className={classes.logo}>
-            <Logo />
-          </NavLink>
+        <button className={headerBtnClass} onClick={navButtonHandler}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <NavLink to="/home" className={classes.logo}>
+          <Logo />
+        </NavLink>
+        <nav
+          className={navClass}
+          onClick={(event: React.MouseEvent) => event.stopPropagation()}
+        >
+          <button className={navBtnClass} onClick={navButtonHandler}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <ul className={classes['ul-main']}>
             <li>
               <NavLink to="/home" className={classIsActive}>
@@ -55,14 +107,14 @@ const MainNavigation: React.FC = () => {
           <ul className={classes['ul-right']}>
             <li>
               <NavLink to="/shopping-cart">
-                <IconButton>
+                <IconButton className={classes.wishlist} sx={{ padding: '0' }}>
                   <FavoriteBorderIcon sx={{ fontSize: 30, color: 'success' }} />
                 </IconButton>
               </NavLink>
             </li>
             <li>
               <NavLink to="/shopping-cart">
-                <IconButton>
+                <IconButton className={classes.cart} sx={{ padding: '0' }}>
                   <ShoppingCartIcon sx={{ fontSize: 30, color: 'success' }} />
                 </IconButton>
               </NavLink>

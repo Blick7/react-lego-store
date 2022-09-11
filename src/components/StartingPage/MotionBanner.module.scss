@@ -36,3 +36,45 @@
     color: #000;
   }
 }
+
+@media (max-width: 50rem) {
+  // 800px
+  .motion-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner-text {
+    position: static;
+    transform: translate(0);
+    margin: 1rem 0;
+    max-width: 30;
+    width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+    & span {
+      display: inline-block;
+      font-size: 1rem;
+      line-height: 1.75rem;
+      max-width: 24rem;
+      width: 100%;
+    }
+
+    & div {
+      & a button {
+        display: inline-flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 23.43rem) {
+  // 375 px
+  .banner-text {
+    & button:last-of-type {
+      margin-top: 1rem;
+    }
+  }
+}

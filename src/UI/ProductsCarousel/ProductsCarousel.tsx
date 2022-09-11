@@ -93,7 +93,7 @@ const ProductsCarousel = (props: IProps) => {
             }
           }}
           onSlideChange={(swiper) => {
-            const slidesPerView = swiper.originalParams.slidesPerView;
+            const slidesPerView = swiper.params.slidesPerView;
             if (slidesPerView !== undefined) {
               if (swiper.realIndex === 0) {
                 setLeftBtnDisabled(true);

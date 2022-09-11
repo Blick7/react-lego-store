@@ -8,6 +8,7 @@
     border-top: 0.1rem solid rgb(224, 224, 224);
     border-bottom: 0.1rem solid rgb(224, 224, 224);
     height: 3rem;
+    pointer-events: none;
   }
 
   input[type='number']::-webkit-inner-spin-button,

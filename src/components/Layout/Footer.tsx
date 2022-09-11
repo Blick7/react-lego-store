@@ -16,9 +16,9 @@ const Footer = () => {
       <div className={classes.container}>
         <div className={classes.wrapper}>
           <div className={classes.group}>
-            <div className={classes.logo}>
+            <span className={classes.logo}>
               <Logo />
-            </div>
+            </span>
             <button className={classes['region-selector']}>
               <LocationOnIcon />
               Unites States
@@ -89,7 +89,9 @@ const Footer = () => {
                 <a href="/">LEGOLAND® Parks</a>
               </li>
               <li>
-                <a href="/">LEGOLAND Discovery Centers</a>
+                <a href="/">
+                  LEGOLAND Discovery <br /> Centers
+                </a>
               </li>
             </ul>
           </div>

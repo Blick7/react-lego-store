@@ -119,11 +119,13 @@ const ProductsCarousel = (props: IProps) => {
                 <div>
                   <Link to={`/product/${item.id}`}>
                     <div className={classes['image-container']}>
-                      <img
-                        className={classes.img}
-                        src={item.imgUrl}
-                        alt="hello"
-                      />
+                      <div style={{ width: '14rem' }}>
+                        <img
+                          className={classes.img}
+                          src={item.imgUrl}
+                          alt="hello"
+                        />
+                      </div>
                       <div className={classes.wishlist}>
                         <FavoriteBorderIcon
                           className={classes['wishlist-icon']}
@@ -134,7 +136,9 @@ const ProductsCarousel = (props: IProps) => {
                     </div>
                   </Link>
                   <div className={classes.description}>
-                    <div>{item.title}</div>
+                    <Link to={`/product/${item.id}`}>
+                      <div>{item.title}</div>
+                    </Link>
                     <div>
                       <DrawStarsRating rating={item.rating} />
                     </div>

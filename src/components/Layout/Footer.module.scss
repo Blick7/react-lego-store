@@ -42,6 +42,7 @@
 
 .group {
   padding: 0.5rem;
+  line-height: 1.6;
 
   & a {
     padding: 0.625rem 0;
@@ -61,7 +62,7 @@
   color: #fff;
   border: none;
   max-width: 9rem;
-  margin: 0.625rem 0;
+  margin: 1rem 0 2.3rem;
 
   padding: 0.4rem;
   display: flex;
@@ -90,12 +91,12 @@
   }
 
   & form {
-    position: relative;
+    display: flex;
   }
 
   & input {
     padding: 1rem 1rem 1rem 1rem;
-    border-bottom: 0.15rem solid rgb(253, 128, 36);
+    border: none;
   }
 }
 
@@ -104,26 +105,21 @@ input:focus {
 }
 
 .subscribe-btn {
-  position: absolute;
   height: 100%;
   width: 3rem;
   right: 3rem;
   padding-top: 0.2rem;
-  border: 0.1rem solid rgb(253, 128, 36);
+  border: none;
   background: rgb(253, 128, 36);
   transition: 0.3s;
   border-radius: 0rem 0.5rem 0.5rem 0rem;
   cursor: pointer;
-
-  &:hover {
-    background: #fff;
-  }
 }
 
 .follow-us {
   max-width: 15rem;
   width: 100%;
-
+  margin-right: 4rem;
   & div {
     display: flex;
     justify-content: space-between;

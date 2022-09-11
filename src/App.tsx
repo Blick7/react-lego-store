@@ -21,7 +21,7 @@ const ProfilePage = React.lazy(() => import('./components/pages/ProfilePage'));
 
 function App() {
   useEffect(() => {
-    AOS.init({ duration: 2000 });
+    AOS.init({ duration: 1000, mirror: false });
   }, []);
   return (
     <Layout>

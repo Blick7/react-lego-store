@@ -9,6 +9,7 @@ import { ReactComponent as YoutubeLogo } from '../../assets/svg/youtube-c51b2c62
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import FooterGroupAdaptive from '../../UI/FooterGroupAdaptive/FooterGroupAdaptive';
 
 const Footer = () => {
   return (
@@ -27,6 +28,7 @@ const Footer = () => {
             <a href="/">LEGO Catalogs</a>
             <a href="/">Find a LEGO Store</a>
           </div>
+
           <div className={classes.group}>
             <h4>ABOUT US</h4>
             <ul>
@@ -120,6 +122,9 @@ const Footer = () => {
                 <a href="/">LEGO® Braille Bricks</a>
               </li>
             </ul>
+          </div>
+          <div className={classes['active-group']}>
+            <FooterGroupAdaptive />
           </div>
         </div>
       </div>

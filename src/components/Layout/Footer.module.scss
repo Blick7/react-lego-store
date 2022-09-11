@@ -21,7 +21,7 @@
 
 .wrapper {
   display: flex;
-  & div {
+  & .group {
     flex: 1 0 20%;
   }
 
@@ -105,7 +105,6 @@ input:focus {
 }
 
 .subscribe-btn {
-  height: 100%;
   width: 3rem;
   right: 3rem;
   padding-top: 0.2rem;
@@ -142,5 +141,63 @@ input:focus {
   & p {
     margin-top: 1.5rem;
     line-height: 1.15rem;
+  }
+}
+
+.active-group {
+  display: none !important;
+  width: 100%;
+}
+
+@media (max-width: 75rem) {
+  // 1200px
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    & .group {
+      flex: 1 0 33.33%;
+    }
+
+    & .group:nth-child(4) {
+      flex: 1 0 20%;
+    }
+    & .group:nth-child(5) {
+      flex: 1 0 53%;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+
+      & h4 {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .group:not(:last-child):not(:first-child) {
+    display: none;
+  }
+
+  .active-group {
+    display: block !important;
+  }
+
+  .notes-wrapper {
+    & ul {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .follow {
+    flex-direction: column;
+
+    & div:last-child {
+      margin-top: 1rem;
+    }
   }
 }

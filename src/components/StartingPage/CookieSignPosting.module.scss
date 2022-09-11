@@ -69,3 +69,16 @@
     width: 2.6rem;
   }
 }
+
+@media (max-width: 37.5rem) {
+  // 600px
+  .container {
+    border-radius: 0;
+  }
+
+  .cookie {
+    & img {
+      display: none;
+    }
+  }
+}

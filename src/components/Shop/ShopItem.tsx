@@ -8,6 +8,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import classes from './ShopItem.module.scss';
 import DrawStarsRating from '../../UI/DrawStarsRating';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 type Product = {
   id: string;
@@ -39,6 +40,9 @@ const ShopItem: React.FC<IProduct> = ({ product }) => {
       return;
     }
     dispatch(addItem({ product, quantity: 1 }));
+    toast.success(`${product.title} added to the cart`, {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
   };
 
   let buttonClass;

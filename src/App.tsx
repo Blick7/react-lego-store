@@ -11,6 +11,7 @@ import LoadingSpinner from './UI/LoadingSpinner';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { ToastContainer } from 'react-toastify';
 
 const HomePage = React.lazy(() => import('./components/pages/HomePage'));
 const ShopPage = React.lazy(() => import('./components/pages/ShopPage'));
@@ -37,6 +38,7 @@ function App() {
           <Route path="*" element={<Navigate replace to="/home" />}></Route>
         </Routes>
       </Suspense>
+      <ToastContainer autoClose={2000} />
     </Layout>
   );
 }

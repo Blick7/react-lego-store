@@ -77,7 +77,15 @@ const MainNavigation: React.FC = () => {
           <span></span>
           <span></span>
         </button>
-        <NavLink to="/home" className={classes.logo}>
+        <NavLink
+          to="/home"
+          className={classes.logo}
+          onClick={() => {
+            setNavIsActive(false);
+            setHeaderButtonIsActive(true);
+            setNavBtnIsActive(false);
+          }}
+        >
           <Logo />
         </NavLink>
         <nav
@@ -91,12 +99,28 @@ const MainNavigation: React.FC = () => {
           </button>
           <ul className={classes['ul-main']}>
             <li>
-              <NavLink to="/home" className={classIsActive}>
+              <NavLink
+                to="/home"
+                className={classIsActive}
+                onClick={() => {
+                  setNavIsActive(false);
+                  setHeaderButtonIsActive(true);
+                  setNavBtnIsActive(false);
+                }}
+              >
                 HOME
               </NavLink>
             </li>
             <li>
-              <NavLink to="/shop" className={classIsActive}>
+              <NavLink
+                to="/shop"
+                className={classIsActive}
+                onClick={() => {
+                  setNavIsActive(false);
+                  setHeaderButtonIsActive(true);
+                  setNavBtnIsActive(false);
+                }}
+              >
                 SHOP
               </NavLink>
             </li>
@@ -106,14 +130,28 @@ const MainNavigation: React.FC = () => {
           </ul>
           <ul className={classes['ul-right']}>
             <li>
-              <NavLink to="/shopping-cart">
+              <NavLink
+                to="/shopping-cart"
+                onClick={() => {
+                  setNavIsActive(false);
+                  setHeaderButtonIsActive(true);
+                  setNavBtnIsActive(false);
+                }}
+              >
                 <IconButton className={classes.wishlist} sx={{ padding: '0' }}>
                   <FavoriteBorderIcon sx={{ fontSize: 30, color: 'success' }} />
                 </IconButton>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/shopping-cart">
+              <NavLink
+                to="/shopping-cart"
+                onClick={() => {
+                  setNavIsActive(false);
+                  setHeaderButtonIsActive(true);
+                  setNavBtnIsActive(false);
+                }}
+              >
                 <IconButton className={classes.cart} sx={{ padding: '0' }}>
                   <ShoppingCartIcon sx={{ fontSize: 30, color: 'success' }} />
                 </IconButton>
@@ -121,7 +159,14 @@ const MainNavigation: React.FC = () => {
             </li>
             {!userStore.user && (
               <li>
-                <NavLink to="/signin">
+                <NavLink
+                  to="/signin"
+                  onClick={() => {
+                    setNavIsActive(false);
+                    setHeaderButtonIsActive(true);
+                    setNavBtnIsActive(false);
+                  }}
+                >
                   <Button variant="contained" color="error">
                     Sign In
                   </Button>
@@ -130,14 +175,28 @@ const MainNavigation: React.FC = () => {
             )}
             {!userStore.user && (
               <li>
-                <NavLink to="/register">
+                <NavLink
+                  to="/register"
+                  onClick={() => {
+                    setNavIsActive(false);
+                    setHeaderButtonIsActive(true);
+                    setNavBtnIsActive(false);
+                  }}
+                >
                   <Button>Register</Button>
                 </NavLink>
               </li>
             )}
             {userStore.user && (
               <li>
-                <NavLink to="/profile">
+                <NavLink
+                  to="/profile"
+                  onClick={() => {
+                    setNavIsActive(false);
+                    setHeaderButtonIsActive(true);
+                    setNavBtnIsActive(false);
+                  }}
+                >
                   <IconButton>
                     <AccountCircleIcon
                       sx={{ fontSize: 30, color: 'success' }}
@@ -148,7 +207,14 @@ const MainNavigation: React.FC = () => {
             )}
             {userStore.user && (
               <li>
-                <NavLink to="/signout">
+                <NavLink
+                  to="/signout"
+                  onClick={() => {
+                    setNavIsActive(false);
+                    setHeaderButtonIsActive(true);
+                    setNavBtnIsActive(false);
+                  }}
+                >
                   <Button
                     variant="contained"
                     color="error"

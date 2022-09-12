@@ -46,8 +46,8 @@ const Shop = () => {
   }, [dispatch]);
 
   return (
-    <section style={{ margin: '2rem 0', padding: '0 1rem' }}>
-      <div style={{ display: 'flex' }}>
+    <section className={classes.container}>
+      <div className={classes.wrapper}>
         <ShopFilters />
         <Box sx={{ flexGrow: 1 }}>
           {status === 'loading' && <LoadingSpinner />}

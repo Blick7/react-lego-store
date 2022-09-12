@@ -66,7 +66,7 @@ const ShopItem: React.FC<IProduct> = ({ product }) => {
       <div className={classes.group}>
         <div className={classes.additional}>
           <a href="/">
-            <h4>{product.title}</h4>
+            <div>{product.title}</div>
           </a>
           <div>
             <DrawStarsRating rating={product.rating} />
@@ -74,7 +74,9 @@ const ShopItem: React.FC<IProduct> = ({ product }) => {
           <div className={classes.price}>{'$' + product.price}</div>
         </div>
         <button className={buttonClass} onClick={addProductHandler}>
-          {product.avaliability}
+          {product.avaliability === 'Available now'
+            ? 'Add to Cart'
+            : product.avaliability}
         </button>
       </div>
     </li>

@@ -28,7 +28,6 @@
 
     & img {
       height: 20rem;
-      // max-width: 20rem;
       width: 100%;
       object-fit: contain;
     }
@@ -84,13 +83,6 @@
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-
-  & h4 {
-    padding-bottom: 1rem;
-    font-family: 'CeraPro-Regular', sans-serif;
-    line-height: 1.5rem;
-    font-weight: 500;
-  }
 }
 
 .button {
@@ -124,14 +116,40 @@
   background-color: #fff;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
   .item {
-    flex: 0 1 33%;
+    flex: 0 1 50%;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .item {
-    flex: 0 1 50%;
+    height: 30rem;
+
+    & .image {
+      padding: 3rem 1rem 0rem 1rem;
+      & img {
+        height: 14rem;
+      }
+    }
+  }
+  .featured {
+    position: absolute;
+    left: 0%;
+    bottom: 45%;
+    background: rgb(255, 208, 0);
+    font-size: 0.75rem;
+    margin: 0 0 0.8rem 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .button {
+    margin-top: 0.1rem;
+  }
+  .not-avaliable-button {
+    margin-top: 0.1rem;
+  }
+  .group {
+    padding: 0 0.3rem 0.3rem;
   }
 }

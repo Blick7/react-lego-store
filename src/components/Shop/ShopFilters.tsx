@@ -10,6 +10,8 @@ import FiltersAccordion from '../../UI/FiltersAccordion';
 import { useDispatch } from 'react-redux';
 import { resetFilter } from '../../store/filter/filterSlice';
 
+import classes from './ShopFilters.module.scss';
+
 const theme = createTheme({
   components: {
     MuiAccordion: {
@@ -27,7 +29,6 @@ const theme = createTheme({
           '&:last-of-type': {
             borderRadius: '0',
           },
-          // ? add also first of type ?
         },
       },
     },
@@ -104,18 +105,8 @@ const ShopFilters = () => {
   };
 
   return (
-    <aside
-      style={{
-        marginRight: '1rem',
-      }}
-    >
-      <div
-        style={{
-          border: '0.04rem solid rgba(0, 0, 0, 0.1)',
-          borderBottom: '0.2rem solid rgba(0, 0, 0, 0.50)',
-          width: '16rem',
-        }}
-      >
+    <aside className={classes.container}>
+      <div className={classes.wrapper}>
         <Button
           variant="text"
           fullWidth

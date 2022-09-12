@@ -1,0 +1,19 @@
+.container {
+  margin-right: 1rem;
+}
+
+.wrapper {
+  border: 0.04rem solid rgba(0, 0, 0, 0.1);
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.5);
+  width: 16rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .wrapper {
+    margin: 0 auto;
+  }
+}

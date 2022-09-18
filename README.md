@@ -2,6 +2,14 @@
 
 [Deploy](https://lego-store-d011a.web.app/home)
 
+Technologies used:
+
+- React
+- Redux(with Toolkit and Thunk)
+- TypeScript
+- Firebase (database and authentication)
+- Material UI
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
